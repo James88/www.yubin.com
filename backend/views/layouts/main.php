@@ -31,12 +31,12 @@ AppAsset::register($this);
                 <div id="left" class="ui-sortable ui-resizable">
 					<nav class="bs-docs-sidebar">
 						
-                        <a id="drop1" href="#collapseOne" data-toggle="collapse" aria-expanded="true"><h4>Dropdown<b class="caret"></h4></b></a>
+                        <a id="drop1" href="#collapseOne" data-toggle="collapse" aria-expanded="true"><h4>首页<b class="caret"></h4></b></a>
                             <ul id="collapseOne" aria-expanded="true" class="collapse in">
-                              <li><a tabindex="-1" href="#">Action</a></li>
-                              <li><a tabindex="-1" href="#">Another action</a></li>
+                              <li><a tabindex="-1" href="/backend/web/">概况</a></li>
+<!--                              <li><a tabindex="-1" href="#">Another action</a></li>
                               <li><a tabindex="-1" href="#">Something else here</a></li>
-                              <li><a tabindex="-1" href="#">Separated link</a></li>
+                              <li><a tabindex="-1" href="#">Separated link</a></li>-->
                             </ul>
                         
 					</nav>

@@ -15,157 +15,40 @@ NavBar::begin([
 ]);
 $menuItemsMain = [
     [
-        'label' => Yii::t('app', 'Order'),
-        'url' => ['#'],
-        'active' => false,
-        'items' => [
-            [
-                'label' => Yii::t('app', 'Order'),
-                'url' => ['/order'],
-            ],
-            [
-                'label' => Yii::t('app', 'Order Log'),
-                'url' => ['/order-log'],
-            ],
-            [
-                'label' => Yii::t('app', 'Cart'),
-                'url' => ['/cart'],
-            ],
-        ],
-        //'visible' => Yii::$app->user->can('readPost'),
-    ],
-    [
-        'label' => Yii::t('app', 'Product'),
-        'url' => ['#'],
-        'active' => false,
-        'items' => [
-            [
-                'label' => Yii::t('app', 'Category'),
-                'url' => ['/category'],
-            ],
-            [
-                'label' => Yii::t('app', 'Product'),
-                'url' => ['/product'],
-            ],
-            [
-                'label' => Yii::t('app', 'Comment'),
-                'url' => ['/comment'],
-            ],
-//            [
-//                'label' => Yii::t('app', 'Consultation'),
-//                'url' => ['/consultation'],
-//            ],
-//            [
-//                'label' => Yii::t('app', 'Brand'),
-//                'url' => ['/brand'],
-//            ],
-            [
-                'label' => Yii::t('app', 'Search Log'),
-                'url' => ['/search-log'],
-            ],
-//            [
-//                'label' => Yii::t('app', 'Import'),
-//                'url' => ['/product/import'],
-//            ],
-//            [
-//                'label' => Yii::t('app', 'Export'),
-//                'url' => ['/product/export'],
-//            ],
-        ],
-        //'visible' => Yii::$app->user->can('readPost'),
-    ],
-     [
-        'label' => "田园社区",
+        'label' => "资讯",
         'url' => ['#'],
         'active' => false,
         'items' => [
             [
                 'label' => "分类管理",
-                'url' => ['/bbs-category'],
+                'url' => ['/category'],
             ],
             [
-                'label' => "帖子管理",
-                'url' => ['/bbs-posts'],
-            ],
-            [
-                'label' => "回帖管理",
-                'url' => ['/bbs-reply'],
+                'label' => "资讯管理",
+                'url' => ['/news'],
             ],
             
         ],
+  
     ],
+    
+    
     [
-        'label' => "庭院设计",
+        'label' => '单页管理',
         'url' => ['#'],
         'active' => false,
         'items' => [
             [
-                'label' => "预约信息管理",
-                'url' => ['/garden-apply'],
+                'label' => '管理',
+                'url' => ['/singlepage/index'],
             ],
             [
-                'label' => "服务流程",
-                'url' => ['/cms/cms-catalog/update','id'=>56],
-            ],
-            [
-                'label' => "设计案例",
-                'url' => ['/garden-cases'],
+                'label' => '添加',
+                'url' => ['/singlepage/create'],
             ],
             
         ],
-        //'visible' => Yii::$app->user->can('readPost'),
     ],
-    [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'User'),
-        'url' => ['#'],
-        'active' => false,
-        //'visible' => Yii::$app->user->can('haha'),
-        'items' => [
-            [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'User'),
-                'url' => ['/user'],
-            ],
-            [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Address'),
-                'url' => ['/address'],
-            ],
-            [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Favorite'),
-                'url' => ['/favorite'],
-            ],
-            [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Point Log'),
-                'url' => ['/point-log'],
-            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Coupon Type'),
-//                'url' => ['/coupon-type'],
-//            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Coupon'),
-//                'url' => ['/coupon'],
-//            ],
-            [
-                'label' => '<i class="fa fa-lock"></i> ' . "用户反馈",
-                'url' => ['/feedback'],
-            ],
-        ],
-    ],
-//    [
-//        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Operation'),
-//        'url' => ['#'],
-//        'active' => false,
-//        'items' => [
-//            [
-//                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Cms Catalog'),
-//                'url' => ['/cms/cms-catalog'],
-//            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Cms Show'),
-//                'url' => ['/cms/cms-show'],
-//            ],
-//        ],
-//    ],
     [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
         'url' => ['#'],
@@ -184,17 +67,18 @@ $menuItemsMain = [
 //                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Auth Role'),
 //                'url' => ['/auth'],
 //            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Setting'),
-//                'url' => ['/setting'],
-//            ],
+            
             [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Region'),
-                'url' => ['/region'],
+                'label' => '站点配置',
+                'url' => ['/config/update','id'=>1],
             ],
             [
                 'label' => '<i class="fa fa-lock"></i> ' . "首页轮播图",
                 'url' => ['/slider'],
+            ],
+            [
+                'label' => '友情链接管理',
+                'url' => ['/friendlink'],
             ],
         ],
     ],

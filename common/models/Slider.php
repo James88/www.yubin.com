@@ -79,6 +79,7 @@ class Slider extends \yii\db\ActiveRecord
             'ord' => '排序',
             'updated_at' => '修改时间',
             'created_at' => '添加时间',
+            'imageFile' => '图片',
         ];
     }
     public function upload() {

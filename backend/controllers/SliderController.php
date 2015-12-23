@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Slider;
 use common\models\SliderSearch;
-use yii\web\Controller;
+use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;

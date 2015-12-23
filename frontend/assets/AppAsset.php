@@ -18,13 +18,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'statics/css/iconfont.css',
+        'statics/css/common.css',
+        'statics/css/index.css',
         'statics/css/style.css',
     ];
     public $js = [
-        'statics/js/common.js',
+        //'statics/js/common.js',
     ];
     public $depends = [
-        'frontend\assets\BootstrapAsset',
+        //'frontend\assets\BootstrapAsset',
     ];
 }
