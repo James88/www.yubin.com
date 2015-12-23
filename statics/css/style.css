@@ -412,8 +412,8 @@ ul.ssfc li{width:265px; height:178px; float:left; margin:10px ;}
 ul.ssfc li img{width:259px; height:174px; padding:2px; border:1px solid #e7ecf0;}
 
 /*师生风采详情*/
-imgnav
-.{width:788px;margin:10px auto;}
+
+.imgnav{width:788px;margin:10px auto;}
 #content{margin:0px auto;line-height:19px;}
 #content p{text-indent:2em;color:#333;}
 

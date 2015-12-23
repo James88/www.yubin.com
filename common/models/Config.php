@@ -55,9 +55,9 @@ class Config extends \yii\db\ActiveRecord
     {
         return [
             [['tongji'], 'string'],
-            [['sitename', 'beianhao', 'n1', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8'], 'string', 'max' => 100],
+            [['sitename', 'beianhao', 'n2', 'n3', 'n4', 'n5', 'n6', 'n7', 'n8'], 'string', 'max' => 100],
             [['description', 'keywords'], 'string', 'max' => 200],
-            [['address'], 'string', 'max' => 230],
+            [['address','n1'], 'string', 'max' => 230],
             [['phone', 'email'], 'string', 'max' => 50]
         ];
     }
@@ -77,7 +77,7 @@ class Config extends \yii\db\ActiveRecord
             'email' => '邮箱',
             'beianhao' => '备案号',
             'tongji' => '统计代码',
-            'n1' => 'N1',
+            'n1' => '网页底部介绍',
             'n2' => 'N2',
             'n3' => 'N3',
             'n4' => 'N4',

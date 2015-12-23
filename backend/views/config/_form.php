@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sitename')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'keywords')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tongji')->textarea(['rows' => 6]) ?>
 
-    <?php //echo $form->field($model, 'n1')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'n1')->textarea(['maxlength' => true]) ?>
 
     <?php //echo $form->field($model, 'n2')->textInput(['maxlength' => true]) ?>
 

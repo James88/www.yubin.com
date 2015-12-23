@@ -5,160 +5,63 @@
  * Create at 2015-12-23 11:38:18
  */
 use frontend\assets\SuperSliderAsset;
+use common\models\Category;
 SuperSliderAsset::register($this);
+$this->title = '首页';
 ?>
 <div class="container">
 	<div class="first-screen">
         <div class="first-left f-l">
-        		<div class="all-sort-list">
-			<div class="item bo">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-01.jpg" width="29" height="29" alt=""></span>工程造价培训</h3>
-				<div class="item-list clearfix" style="top: 1px; display: none;">
+        <div class="all-sort-list">
+            <?php foreach ($bigCate as $k => $v): ?>
+            
+            <div class="item<?php if($k == 0){echo " bo";} ?>">
+                <h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-01.jpg" width="29" height="29" alt=""></span><?= $v->name; ?></h3>
+				<div class="item-list clearfix">
 				  <div class="close">x</div>
 					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">造价</a></dt>
-							<dd><em><a href="#">造价工程师</a></em><em><a href="#">造价员</a></em></dd>
+                        <?php 
+                        //获取二级分类
+                        $secondCate = Category::find()->where(['parent_id'=>$v->id])->orderBy(['sort_order'=>SORT_ASC])->all();
+                        foreach ($secondCate as $kk => $vv): ?>
+						<dl class="fore<?php echo $kk+1; ?>">
+                            <dt><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>$vv->id]); ?>"><?= $vv->name; ?></a></dt>
+							<dd>
+                                <?php 
+                                //循环三级分类
+                                $thirdCate = Category::find()->where(['parent_id'=>$v->id])->orderBy(['sort_order'=>SORT_ASC])->all();
+
+                                foreach ($thirdCate as $kkk => $vvv): ?>
+                                       
+                                <em><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>$vvv->id]); ?>"><?= $vvv->name; ?></a></em>
+                                 <?php endforeach; ?>
+                            </dd>
 						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-						<dl class="fore3">
-							<dt><a href="#">音像</a></dt>
-							<dd><em><a href="#">音乐</a></em><em><a href="#">影视</a></em><em><a href="#">教育音像</a></em><em><a href="#">游戏</a></em></dd>
-						</dl>
+                        <?php endforeach; ?>
+						
 					</div>
 					
 				</div>
 			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-02.jpg" width="29" height="29" alt=""></span>安装工程造价培训</h3>
-			  <div class="item-list clearfix" style="top: 52px; display: none;">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书1</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-					</div>
-					
-			  </div>
-			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-03.jpg" width="29" height="29" alt=""></span>建造师培训</h3>
-			  <div class="item-list clearfix" style="top: 103px; display: none;">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书2</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-					</div>
-
-			  </div>
-			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-04.jpg" width="29" height="29" alt=""></span>八大员培训</h3>
-			  <div class="item-list clearfix" style="top: 154px; display: none;">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书3</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-						<dl class="fore3">
-							<dt><a href="#">音像</a></dt>
-							<dd><em><a href="#">音乐</a></em><em><a href="#">影视</a></em><em><a href="#">教育音像</a></em><em><a href="#">游戏</a></em></dd>
-						</dl>
-					</div>
-				
-			  </div>
-			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-05.jpg" width="29" height="29" alt=""></span>学历教育</h3>
-			  <div class="item-list clearfix" style="top: 205px; display: none;">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书4</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-						<dl class="fore3">
-							<dt><a href="#">音像</a></dt>
-							<dd><em><a href="#">音乐</a></em><em><a href="#">影视</a></em><em><a href="#">教育音像</a></em><em><a href="#">游戏</a></em></dd>
-						</dl>
-					</div>
-					
-			  </div>
-			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-01.jpg" width="29" height="29" alt=""></span>执业医药师</h3>
-			  <div class="item-list clearfix" style="top: 256px; display: none;">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书5</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-						<dl class="fore3">
-							<dt><a href="#">音像</a></dt>
-							<dd><em><a href="#">音乐</a></em><em><a href="#">影视</a></em><em><a href="#">教育音像</a></em><em><a href="#">游戏</a></em></dd>
-						</dl>
-					</div>
-					
-			  </div>
-			</div>
-			<div class="item">
-				<h3><span><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pxxm-06.jpg" width="29" height="29" alt=""></span>工程师培训</h3>
-			  <div class="item-list clearfix">
-					<div class="close">x</div>
-					<div class="subitem">
-						<dl class="fore1">
-							<dt><a href="#">电子书6</a></dt>
-							<dd><em><a href="#">免费</a></em><em><a href="#">小说</a></em><em><a href="#">励志与成功</a></em><em><a href="#">婚恋/两性</a></em><em><a href="#">文学</a></em><em><a href="#">经管</a></em><em><a href="#">畅读VIP</a></em></dd>
-						</dl>
-						<dl class="fore2">
-							<dt><a href="#">数字音乐</a></dt>
-							<dd><em><a href="#">通俗流行</a></em><em><a href="#">古典音乐</a></em><em><a href="#">摇滚说唱</a></em><em><a href="#">爵士蓝调</a></em><em><a href="#">乡村民谣</a></em><em><a href="#">有声读物</a></em></dd>
-						</dl>
-					</div>
-					
-			  </div>
-			</div>
+            <?php endforeach; ?>
 		</div>
         </div>
         <div class="first-middle f-l">
         	<div class="first-middle-t">
             	<div id="slideBox" class="slideBox">
 			<div class="hd">
-				<ul><li class="on">1</li><li>2</li><li>3</li></ul>
+				<ul>
+                    <?php for($i = 0; $i < count($slider); $i++){ ?>
+                    <li<?php if($i == 0){ echo ' class="on"';}; ?>><?= $i+1; ?></li>
+                    <?php } ?>
+                </ul>
 			</div>
 			<div class="bd">
 				<ul>
-					<li><a href="#" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/banner01.jpg"></a></li>
-					<li style="display: none;"><a href="#" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/pic2.jpg"></a></li>
-					<li style="display: none;"><a href="#" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/banner01.jpg"></a></li>
+                    <?php foreach ($slider as $k => $v): ?>
+                    <li><a href="<?= $v->url; ?>" target="_blank"><img src="<?= $v->thumb; ?>"></a></li>
+					<?php endforeach; ?>
+                    
 				</ul>
 			</div>
 

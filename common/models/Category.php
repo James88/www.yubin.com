@@ -298,5 +298,14 @@ class Category extends \yii\db\ActiveRecord
 
         return $arrayResult;
     }
-
+    /*
+     * 获取分类名
+     */
+    static public function getCategoryName($id){
+        $info = Category::findOne($id);
+        if($info){
+            return $info->name;
+        }
+        return "分类不存在";
+    }
 }

@@ -14,7 +14,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?>_<?= $this->params['siteconfig']['sitename'] ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -45,7 +45,7 @@ AppAsset::register($this);
           </div>
     </div>
     <ul class="mainNav clearfix">
-        <li><a  href="#" class="location_z select">首页</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['site/index']); ?>" class="location_z select">首页</a></li>
         <li><a  href="zixun-list.html" class="location_z">报考指南</a></li>
         <li><a  href="detail（zx）.html" class="location_z">造价员培训</a></li>
         <li><a  href="wlst-list.html" target="_blank" >网络试听</a></li>
@@ -71,8 +71,7 @@ AppAsset::register($this);
             </ul>
         </div>
         <div class="foot-middle f-l">
-        	宇斌教育网（www.ybjypx.com）专注于建筑培训行业。依托于河南经济职业技术学院，整合业内资源，为热爱建筑行业的学员提供专业，急速的信息服务，帮助学员更有针对性的学习，同时也为学员提供最热的招聘信息，立致于实现最优质人才与最合适的企业快速无
-缝对接。
+        	<?= $this->params['siteconfig']['n1']; ?>
         </div>
         <div class="foot-right f-l">
         	<div class="foot-right-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/weixin.jpg" width="121" height="156" alt=""/></div>
@@ -86,8 +85,8 @@ AppAsset::register($this);
         </div>
     </div>
   <div class="foot-bq">
-    	<p>Copyright© 2001-2010 Incorporated. All rights reserved. 豫ICP备案14000272</p>
-        <p>技术支持：<a href="#">河南亿飞网络科技有限公司</a></p>
+      <p>Copyright© 2001-2016 Incorporated. All rights reserved. <?= $this->params['siteconfig']['beianhao']; ?></p>
+        <p>技术支持：<a href="http://www.yifei100.com/" target="_blank">河南亿飞网络科技有限公司</a></p>
     </div>
 </div>
 
