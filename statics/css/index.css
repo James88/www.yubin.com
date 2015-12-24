@@ -157,7 +157,7 @@ ul.zxzp-nr li a label.zx-ys,ul.zxzp-nr li a:hover label.zx-ys{ color:#006ca7;}
 .pxxm-left{ width:880px;}
 /* 选项卡css */
 		.slideTxtBox{ width:420px; border-top:2px solid #006ca7; text-align:left; margin:0 20px 20px 0;}
-		.slideTxtBox .hd{ height:37px; line-height:37px;  padding:0 10px 0 0px;   border-bottom:1px solid #ddd;  position:relative; }
+		.slideTxtBox .hd{ height:37px; line-height:37px;  padding:0 10px 0 0px;   border-bottom:1px solid #ddd;  position:relative; border-right: solid 1px #ddd;}
 		.slideTxtBox .hd ul{ float:left;  position:absolute; left:0px; top:0px; height:32px;   }
 		.slideTxtBox .hd ul li{ float:left; padding:0 15px; cursor:pointer; font-size:16px;  }
 		.slideTxtBox .hd ul li.on{ height:37px;  color:#006ca7; border:1px solid #ddd; border-bottom:2px solid #fff; border-top:none; }

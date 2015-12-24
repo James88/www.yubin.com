@@ -308,4 +308,21 @@ class Category extends \yii\db\ActiveRecord
         }
         return "分类不存在";
     }
+    
+    static public function getBreadcrumbs($id,$url,$param){
+        $breadCrumbs = [];
+        $cate = self::findOne($id);
+        if($cate){
+            $breadCrumbs[] = ['label'=>$cate->name,'url'=>[$url,$param=>$cate->id]];
+            $p = self::findOne($cate->parent_id);
+            if($p){
+                $breadCrumbs[] = ['label'=>$p->name,'url'=>[$url,$param=>$p->id]];
+                $f = self::findOne($p->parent_id);;
+                if($f){
+                    $breadCrumbs[] = ['label'=>$f->name,'url'=>[$url,$param=>$f->id]];
+                }
+            }
+        }
+        return array_reverse($breadCrumbs);
+    }
 }

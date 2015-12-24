@@ -7,6 +7,7 @@ use common\models\News;
 use common\models\Status;
 use yii\helpers\ArrayHelper;
 use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
 /**
  * Site controller
  */
@@ -19,7 +20,7 @@ class NewsController extends Controller
         $where = [
             'and',
             ['category_id'=>$arrSubCat],
-            'status='.Status::STATUS_ACTIVE,
+            'status>='.Status::STATUS_ACTIVE,
         ];
         $query = News::find()->where($where);
         $dataProvider = new ActiveDataProvider([
@@ -34,4 +35,29 @@ class NewsController extends Controller
         ]);
         
     }
+    
+    
+    public function actionShow($id = 1){
+        $model = $this->findModel($id);
+        $model->views += 1;
+        $model->save();
+        
+        $prev = $model->getPrev();
+        $next = $model->getNext();
+        return $this->render('show',[
+            'model'=>$model,
+            'prev'=>$prev,
+            'next'=>$next,
+        ]);
+    }
+    
+    protected function findModel($id){
+        if (($model = News::find()->where(['and','id='.$id,'status>='.Status::STATUS_ACTIVE])->One()) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    
+    
 }

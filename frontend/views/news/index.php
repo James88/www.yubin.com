@@ -8,17 +8,24 @@
 use common\models\Category;
 
 $this->title = "列表_".Category::getCategoryName($cid);
+$breadcrumbs = Category::getBreadcrumbs($cid, "news/index", "cid");
+$this->params['breadcrumbs'] = $breadcrumbs;
+//var_dump($breadcrumbs);die;
 ?>
 <div class="container ">
 	<div class="container-left f-l">
-    	<div class="dqwz">当前位置：首页 &gt;<span>报考指南</span></div>
+  
+            
+            
+        <?php echo $this->render('/layouts/_breadcrumbs'); ?>
+
         <ul class="zxlb-list">
             <?php foreach ($models as $k => $v): ?>
             <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><span><?= \common\components\Utils::dateFormat($v->created_at, 0); ?></span><?= $v->title; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <div class="clear"></div>
-        <div class="fy"><a href="#">首页</a><a href="#">上一页</a><a href="#">1</a><a href="#" class="selected">2</a><a href="#">下一页</a><a href="#">尾页</a></div>	
+        <?php echo $this->render('/layouts/_pagination',['pagination'=>$pagination]); ?>	
      </div>
      <div class="container-right f-r">
     	<div class="kbxx-list-img"><img src="images/list-ad01.jpg" width="295" height="155" alt=""></div>

@@ -50,7 +50,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['category_id', 'title', 'content'], 'required'],
-            [['category_id', 'status','created_at', 'updated_at'], 'integer'],
+            [['category_id', 'status','created_at','views', 'updated_at'], 'integer'],
             [['description', 'intro', 'content'], 'string'],
             [['title', 'keyword'], 'string', 'max' => 100],
             [['thumb'], 'string', 'max' => 120],
@@ -82,4 +82,36 @@ class News extends \yii\db\ActiveRecord
     public function getCategory(){
         return $this->hasOne(Category::className(),['id'=>'category_id']);
     }
+    
+    /*
+     * 获取上一篇
+     */
+    public function getPrev(){
+        return self::find()->where(['and','category_id='.$this->category_id,'id<'.$this->id,'status>='.Status::STATUS_ACTIVE])->one();
+        
+    }
+    /*
+     * 下一篇
+     */
+    public function getNext(){
+        return self::find()->where(['and','category_id='.$this->category_id,'id>'.$this->id,'status>='.Status::STATUS_ACTIVE])->one();
+        
+    }
+    
+    /*
+     * 获取部分新闻 根据分类
+     */
+    static public function getNews($cid,$num){
+        $allCategory = Category::find()->asArray()->all();
+        $arrayCategoryIdName = \yii\helpers\ArrayHelper::map($allCategory, 'id', 'name');
+        $arrSubCat = Category::getArraySubCatalogId($cid, $allCategory);
+        $where = [
+            'and',
+            ['category_id'=>$arrSubCat],
+            'status>='.Status::STATUS_ACTIVE,
+        ];
+        $news = News::find()->where($where)->limit($num)->all();
+        return $news;
+    }
+    
 }

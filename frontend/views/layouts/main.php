@@ -32,11 +32,11 @@ AppAsset::register($this);
           <div class="f-r">
            <div class="search-panel">
                 <ul class="search-panel-li clearfix">
-                    <li><a   tip="fac_price" href="javascript:void(0);" class="selected">造价员</a></li>
-                    <li><a   tip="gov_search" href="javascript:void(0);">建造师</a></li>
-                    <li><a   tip="gov_search"  href="javascript:void(0);">八大员</a></li>
-                    <li><a   tip="fac" href="javascript:void(0);">学历教育</a></li>
-                   <li><a   tip="xunjia" href="javascript:void(0);">招聘信息</a></li>
+                    <li><a tip="fac_price" href="javascript:void(0);" class="selected">造价员</a></li>
+                    <li><a tip="gov_search" href="javascript:void(0);">建造师</a></li>
+                    <li><a tip="gov_search"  href="javascript:void(0);">八大员</a></li>
+                    <li><a tip="fac" href="javascript:void(0);">学历教育</a></li>
+                   <li><a tip="xunjia" href="javascript:void(0);">招聘信息</a></li>
                 </ul>
                <div class="search-panel-input">
                   <input type="text" id="key" placeholder="请输入关键字 如“ 造价员培训 ”" class="txt-inp" /><input type="button" onclick="toSearch();" class="btn-search" value="" />
@@ -49,12 +49,12 @@ AppAsset::register($this);
         <li><a  href="zixun-list.html" class="location_z">报考指南</a></li>
         <li><a  href="detail（zx）.html" class="location_z">造价员培训</a></li>
         <li><a  href="wlst-list.html" target="_blank" >网络试听</a></li>
-        <li><a  href="zxzx-list.html" target="_blank">资讯中心</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>7]); ?>" target="_blank">资讯中心</a></li>
         <li><a  href="zhaopin-list.html" target="_blank">企业招聘</a></li>
         <li><a  href="zhaopin-list.html" target="_blank">求职简历</a></li>
         <li><a  href="xxj-list.html" target="_blank">信息价</a></li>
         <li><a  href="zixun-list.html" target="_blank">资料下载</a></li>
-     <li><a  href="contact.html" target="_blank">联系我们</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['site/contact']); ?>" target="_blank">联系我们</a></li>
     </ul>
 </div>
 
@@ -65,9 +65,9 @@ AppAsset::register($this);
         <div class="foot-left f-l">
         	<div class="foot-left-top"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/foot-logo.jpg" width="144" height="63" alt=""/></div>
             <ul  class="foot-left-bottom">
-            	<li><a href="about.html">关于我们</a></li>
-                <li><a href="contact.html">联系我们</a></li>
-                <li><a href="mianzeshengming.html">免责声明</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['site/about']); ?>">关于我们</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['site/contact']); ?>">联系我们</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['site/mianze']); ?>">免责声明</a></li>
             </ul>
         </div>
         <div class="foot-middle f-l">

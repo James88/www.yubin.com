@@ -13,7 +13,8 @@
 .wlst-list-nr-tit span{ float:right; }
 .wlst-list-nr-tit span .wlst-btn{ background: url(../images/mfst.jpg) no-repeat 2px center #006ca7;border-radius:5px; width:78px; height:35px; color:#fff;border-style: none; text-align:right;}
 .fy{ height:32px; width:855px; margin-top:30px; text-align:center;}
-.fy a{ border:1px solid #999; padding:5px 10px; color:#999; margin-right:15px;}
+.fy ul li{display: inline-block;}
+.fy a,.fy span{ border:1px solid #999; padding:5px 10px; color:#999; margin-right:15px;}
 .fy a:hover{border:1px solid #006ca7; color:#006ca7;}
 .fy a.selected,.fy a.selected:hover{border:1px solid #006ca7; color:#006ca7;}
 /*网络试听详情*/
@@ -75,7 +76,8 @@ ul.zlxz-list li span{ float:right;}
 .mzsm-tit{ font-size:16px; background:url(../images/mzsm-tb.gif) no-repeat left center; padding-left:20px;}
 .xian{ border-bottom:1px dotted #e7ecf0;}
 /*详情内页*/
-.detail-nr{ padding:0 30px; line-height:29px; }
+.detail-nr{ padding:0 30px; line-height:29px;}
+.detail-nr .nr-hg{overflow: hidden;}
 .detail-nr p{ margin-bottom:20px; text-indent:2em;}
 .xq-bt{ font-size:18px; font-weight:bold; height:30px; line-height:30px;text-align:center;}
 .time{ text-align:center;border-bottom:1px solid #e7ecf0; margin-bottom:20px;}

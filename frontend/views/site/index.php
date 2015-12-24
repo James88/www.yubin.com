@@ -8,6 +8,7 @@ use frontend\assets\SuperSliderAsset;
 use common\models\Category;
 SuperSliderAsset::register($this);
 $this->title = '首页';
+$kaibanxinxi = \common\models\News::getNews(6,5);
 ?>
 <div class="container">
 	<div class="first-screen">
@@ -29,7 +30,7 @@ $this->title = '首页';
 							<dd>
                                 <?php 
                                 //循环三级分类
-                                $thirdCate = Category::find()->where(['parent_id'=>$v->id])->orderBy(['sort_order'=>SORT_ASC])->all();
+                                $thirdCate = Category::find()->where(['parent_id'=>$vv->id])->orderBy(['sort_order'=>SORT_ASC])->all();
 
                                 foreach ($thirdCate as $kkk => $vvv): ?>
                                        
@@ -78,14 +79,15 @@ $this->title = '首页';
 				<a class="next"></a>
 				<a class="prev"></a>
 			</div>
-			<div class="bd">
-				<div class="tempWrap" style="overflow:hidden; position:relative; width:942px"><ul class="infoList" style="width: 3297px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -975px;"><li class="clone" style="float: left; width: 391px;"><a href="#" target="_blank">宇斌教育一级建造师2016年2月16正式开班啦！</a><span>[2016-08-06]</span></li>
-					<li style="float: left; width: 391px;"><a href="#" target="_blank">宇斌教育官方网站隆重上线啦！！！</a><span>[2016-11-11]</span></li>
-					<li style="float: left; width: 391px;"><a href="#" target="_blank">最新造价员资料上传完毕</a><span>[2016-02-08]</span></li>
-					<li style="float: left; width: 391px;"><a href="#" target="_blank">教育培训行业优势资源推介</a><span>[2016-06-26]</span></li>
-					<li style="float: left; width: 391px;"><a href="#" target="_blank">宇斌教育一级建造师2016年2月16正式开班啦！</a><span>[2016-08-06]</span></li>
-				<li class="clone" style="float: left; width: 391px;"><a href="#" target="_blank">宇斌教育官方网站隆重上线啦！！！</a><span>[2016-11-11]</span></li><li class="clone" style="float: left; width: 391px;"><a href="#" target="_blank">最新造价员资料上传完毕</a><span>[2016-02-08]</span></li></ul></div>
+			
+            <div class="bd">
+				<ul class="infoList">
+                    <?php foreach ($kaibanxinxi as $k => $v): ?>
+                    <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a><span>[<?= \common\components\Utils::dateFormat($v->created_at, 0); ?>]</span></li>
+                    <?php endforeach; ?>
+				</ul>
 			</div>
+                    
 		</div>
         
             </div>
@@ -127,14 +129,17 @@ $this->title = '首页';
 <!--开班信息、综合新闻、网络试听-->
     <div class="kb-zh-wl">
    	  <div class="third-left f-l">
-       	<div class="kbxx-tit lm-tb"><span><a href="#">更多</a></span>开班信息</div>	
+          <div class="kbxx-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>6]); ?>">更多</a></span>开班信息</div>	
             <div class="kbxx-img"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/kbxx.gif" width="345" height="103" alt=""></div>
             <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
+                
+                <?php if($kaibanxinxi){
+                    foreach($kaibanxinxi as $k=>$v):
+                 ?>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>">土建实训第三期6月8号开班了</a></li> 
+                <?php endforeach;}else{ ?>
+                <li><a href="#">暂无内容</a></li> 
+                <?php } ?>
         </ul>
       </div>
         <div class="third-middle f-l">
@@ -682,8 +687,9 @@ $this->title = '首页';
   <div class="yqlj">
     	<div class="yqlj-tit">友情链接</div>
     <div class="yqlj-nr">
-        	<span>建材网</span><span>河南工程信息网</span><span>郑州猎聘网</span><span>建材网</span><span>河南建材价格网</span>
-           
+        <?php foreach ($friendlink as $k => $v): ?>
+        <a href="<?= $v->link; ?>" target="_blank"><span>建材网</span></a>
+        <?php endforeach; ?>     
     </div>
     </div>
     <div class="ad01"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/ad02.jpg" width="1170" height="69" alt=""></div>
