@@ -50,6 +50,43 @@ $menuItemsMain = [
         ],
     ],
     [
+        'label' => '师生风采',
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '管理',
+                'url' => ['/album/index'],
+            ],
+            [
+                'label' => '添加',
+                'url' => ['/album/create'],
+            ],
+            
+        ],
+    ],
+    [
+        'label' => '招聘管理',
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '招聘企业管理',
+                'url' => ['/company/index'],
+            ],
+            [
+                'label' => '招聘职位管理',
+                'url' => ['/jobs/index'],
+            ],
+            [
+                'label' => '简历管理',
+                'url' => ['/jianli/index'],
+            ],
+            
+        ],
+    ],
+    
+    [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
         'url' => ['#'],
         'active' => false,
