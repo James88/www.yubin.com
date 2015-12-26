@@ -23,6 +23,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class News extends \yii\db\ActiveRecord
 {
+    public $imageFile;
     /**
      * @inheritdoc
      */
@@ -54,7 +55,8 @@ class News extends \yii\db\ActiveRecord
             [['description', 'intro', 'content'], 'string'],
             [['title', 'keyword'], 'string', 'max' => 100],
             [['thumb'], 'string', 'max' => 120],
-            [['author'], 'string', 'max' => 30]
+            [['author'], 'string', 'max' => 30],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'gif, png, jpg'],
         ];
     }
 
@@ -76,6 +78,7 @@ class News extends \yii\db\ActiveRecord
             'status' => '状态',
             'created_at' => '添加时间',
             'updated_at' => '修改时间',
+            'imageFile' => '缩略图',
         ];
     }
     
@@ -113,5 +116,28 @@ class News extends \yii\db\ActiveRecord
         $news = News::find()->where($where)->limit($num)->all();
         return $news;
     }
+    /*
+     * 缩略图上传
+     */
+    public function upload() {
+        
+        //parent::beforeSave($insert);
+        
+        if ($this->imageFile && $this->validate()) {
+            
+            $Name = \common\components\Utils::fileName(5);
+  
+            $fileName = 'upload/news/' . $Name . '.' .  $this->imageFile->extension;
+            $this->imageFile->saveAs(Yii::getAlias("@wwwdir")."/".$fileName);
+            $str = "/".$fileName;
     
+        } else {
+            $str = '';
+        }
+        
+        $this->thumb = $str;
+        
+        $this->imageFile = null;
+        
+    }
 }

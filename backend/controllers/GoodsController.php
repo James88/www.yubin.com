@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\News;
-use common\models\NewsSearch;
+use common\models\Goods;
+use common\models\GoodsSearch;
 use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 /**
- * NewsController implements the CRUD actions for News model.
+ * GoodsController implements the CRUD actions for Goods model.
  */
-class NewsController extends Controller
+class GoodsController extends Controller
 {
     public function behaviors()
     {
@@ -23,29 +23,25 @@ class NewsController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-        ];
-    }
-    public function actions()
-    {
-        return [
-            'upload' => [
-                'class' => 'kucha\ueditor\UEditorAction',
-                'config' => [
-                    //"imageUrlPrefix"  => "http://www.baidu.com",//图片访问路径前缀
-                    'allowDivTransToP'=>false,
-                    "imagePathFormat" => "/upload/images/{yyyy}{mm}{dd}/{time}{rand:6}" //上传保存路径
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
-            ]
+            ],
         ];
     }
 
     /**
-     * Lists all News models.
+     * Lists all Goods models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new NewsSearch();
+        $searchModel = new GoodsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -55,7 +51,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Displays a single News model.
+     * Displays a single Goods model.
      * @param string $id
      * @return mixed
      */
@@ -67,26 +63,16 @@ class NewsController extends Controller
     }
 
     /**
-     * Creates a new News model.
+     * Creates a new Goods model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new News();
+        $model = new Goods();
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            if (isset($_FILES) && $_FILES) {
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                if($model->imageFile){
-                    $model->upload();
-                }
-            }
-            
-            if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -95,7 +81,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Updates an existing News model.
+     * Updates an existing Goods model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -104,16 +90,8 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            if (isset($_FILES) && $_FILES) {
-                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-                if($model->imageFile){
-                    $model->upload();
-                }
-            }
-            if($model->save()){
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -122,7 +100,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Deletes an existing News model.
+     * Deletes an existing Goods model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -135,15 +113,15 @@ class NewsController extends Controller
     }
 
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the Goods model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return News the loaded model
+     * @return Goods the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = News::findOne($id)) !== null) {
+        if (($model = Goods::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

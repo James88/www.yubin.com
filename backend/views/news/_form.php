@@ -11,19 +11,19 @@ use yii\widgets\ActiveForm;
 
 <div class="news-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::get(0, Category::find()->asArray()->all()), 'id', 'label')) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?php //echo $form->field($model, 'thumb')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'imageFile')->fileInput() ?>
 
     <?php //$form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
 
     <?php //$form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?php //$form->field($model, 'intro')->textarea(['rows' => 6]) ?>
+    <?php echo $form->field($model, 'intro')->textarea(['rows' => 6]) ?>
 
    
     <?= $form->field($model, 'content')->widget('kucha\ueditor\UEditor',[]); ?>
