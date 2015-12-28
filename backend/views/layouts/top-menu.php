@@ -85,6 +85,37 @@ $menuItemsMain = [
             
         ],
     ],
+    [
+        'label' => '商品信息价',
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '商品管理',
+                'url' => ['/goods/index'],
+            ],
+            [
+                'label' => '价格变更日志',
+                'url' => ['/goods-pricelog/index'],
+            ],
+        ],
+    ],
+    [
+        'label' => '下载管理',
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '下载文件管理',
+                'url' => ['/file-download/index'],
+            ],
+            [
+                'label' => '添加下载文件',
+                'url' => ['/file-download/create'],
+            ],
+          
+        ],
+    ],
     
     [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),

@@ -44,7 +44,7 @@ class FileDownload extends \yii\db\ActiveRecord
         return [
             [['title'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
-            [['title', 'filepath'], 'string', 'max' => 200]
+            [['title', 'filepath'], 'string']
         ];
     }
 
@@ -55,9 +55,9 @@ class FileDownload extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'filepath' => 'Filepath',
-            'created_at' => 'Created At',
+            'title' => '标题',
+            'filepath' => '内容',
+            'created_at' => '添加时间',
             'updated_at' => 'Updated At',
         ];
     }

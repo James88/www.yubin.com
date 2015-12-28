@@ -47,8 +47,8 @@ class Album extends \yii\db\ActiveRecord
             [['title'], 'required'],
             [['views', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 100],
-            [['intro'], 'string', 'max' => 255],
-            [['author'], 'string', 'max' => 200]
+            [['intro'], 'string'],
+            [['author','image','thumb'], 'string', 'max' => 200]
         ];
     }
 
@@ -67,4 +67,24 @@ class Album extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+    /*
+     * 关联图集里的图片
+     */
+    public function getImages(){
+        return $this->hasMany(AlbumImage::className(), ['album_id'=>'id']);
+    }
+    
+    /*
+     * 获取上一篇
+     */
+    public function getPrev(){
+        return self::find()->where(['and','id<'.$this->id])->one();
+    }
+    /*
+     * 下一篇
+     */
+    public function getNext(){
+        return self::find()->where(['and','id>'.$this->id])->one();
+    }
+    
 }

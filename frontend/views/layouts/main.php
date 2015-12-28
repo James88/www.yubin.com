@@ -47,13 +47,13 @@ AppAsset::register($this);
     <ul class="mainNav clearfix">
         <li><a  href="<?= Yii::$app->urlManager->createUrl(['site/index']); ?>" class="location_z select">首页</a></li>
         <li><a  href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>8]); ?>" class="location_z">报考指南</a></li>
-        <li><a  href="detail（zx）.html" class="location_z">造价员培训</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['site/zaojiayuan']); ?>" class="location_z">造价员培训</a></li>
         <li><a  href="wlst-list.html" target="_blank" >网络试听</a></li>
         <li><a  href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>7]); ?>" target="_blank">资讯中心</a></li>
-        <li><a  href="zhaopin-list.html" target="_blank">企业招聘</a></li>
-        <li><a  href="zhaopin-list.html" target="_blank">求职简历</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['job/index']); ?>" target="_blank">企业招聘</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['jianli/index']); ?>" target="_blank">求职简历</a></li>
         <li><a  href="xxj-list.html" target="_blank">信息价</a></li>
-        <li><a  href="zixun-list.html" target="_blank">资料下载</a></li>
+        <li><a  href="<?= Yii::$app->urlManager->createUrl(['file-download/index']); ?>" target="_blank">资料下载</a></li>
         <li><a  href="<?= Yii::$app->urlManager->createUrl(['site/contact']); ?>" target="_blank">联系我们</a></li>
     </ul>
 </div>

@@ -61,12 +61,19 @@ class Goods extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => '商品名',
-            'guige' => '规格下/型号',
-            'danwei' => 'Danwei',
-            'price' => '价格单位元',
-            'beizhu' => 'Beizhu',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'guige' => '规格/型号',
+            'danwei' => '单位',
+            'price' => '价格',
+            'beizhu' => '备注',
+            'created_at' => '添加时间',
+            'updated_at' => '修改时间',
         ];
+    }
+    
+    /*
+     * 查找商品
+     */
+    static public function findModel($pk){
+        return self::findOne($pk);
     }
 }

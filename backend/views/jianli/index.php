@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nianling',
             'xueli',
             // 'xiangguanzhengshu',
-            // 'yingpingzhiwei',
+             'yingpingzhiwei',
             // 'qiwangxinzi',
             // 'gerenjianjie',
             // 'qitayaoqiu',

@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'gongzuojingyan',
             'jingzhengyoushi',
             'zhiweimiaoshu:ntext',
-            'create_at',
+            'created_at',
             'updated_at',
             'status',
         ],

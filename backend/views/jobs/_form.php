@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'company_id')->textInput() ?>
+    <?= $form->field($model, 'company_id')->dropDownList(yii\helpers\ArrayHelper::map(\common\models\Company::allCompany(),'id','name')) ?>
 
     <?= $form->field($model, 'zhiweiming')->textInput(['maxlength' => true]) ?>
 
@@ -32,13 +32,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jingzhengyoushi')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'zhiweimiaoshu')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'zhiweimiaoshu')->widget('kucha\ueditor\UEditor',[]); ?>
 
-    <?= $form->field($model, 'create_at')->textInput() ?>
+ 
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(\common\models\Status::labels()) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -34,7 +34,19 @@ class FileDownloadController extends Controller
             ],
         ];
     }
-
+    public function actions()
+    {
+        return [
+            'upload' => [
+                'class' => 'kucha\ueditor\UEditorAction',
+                'config' => [
+                    //"imageUrlPrefix"  => "http://www.baidu.com",//图片访问路径前缀
+                    'allowDivTransToP'=>false,
+                    "imagePathFormat" => "/upload/images/{yyyy}{mm}{dd}/{time}{rand:6}" //上传保存路径
+                ],
+            ]
+        ];
+    }
     /**
      * Lists all FileDownload models.
      * @return mixed

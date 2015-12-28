@@ -18,7 +18,7 @@ class JobsSearch extends Jobs
     public function rules()
     {
         return [
-            [['id', 'company_id', 'create_at', 'updated_at', 'status'], 'integer'],
+            [['id', 'company_id', 'created_at', 'updated_at', 'status'], 'integer'],
             [['zhiweiming', 'gongzuodiqu', 'zhiweixinzi', 'xueliyaoqiu', 'zhaopinrenshu', 'gongzuoxingzhi', 'xingbieyaoqiu', 'gongzuojingyan', 'jingzhengyoushi', 'zhiweimiaoshu'], 'safe'],
         ];
     }
@@ -58,7 +58,7 @@ class JobsSearch extends Jobs
         $query->andFilterWhere([
             'id' => $this->id,
             'company_id' => $this->company_id,
-            'create_at' => $this->create_at,
+            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'status' => $this->status,
         ]);

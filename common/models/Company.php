@@ -62,4 +62,16 @@ class Company extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
         ];
     }
+    /*
+     * 返回所有企业
+     */
+    static public function allCompany(){
+        return self::find()->asArray()->all();
+    }
+    /*
+     * 查找某个企业
+     */
+    static public function findModel($pk){
+        return self::findOne($pk);
+    }
 }

@@ -3,7 +3,7 @@
 namespace backend\widgets\image;
 
 use Yii;
-use common\models\ContestantImage;
+use common\models\AlbumImage;
 use yii\base\Action;
 
 class RemoveAction extends Action
@@ -12,11 +12,11 @@ class RemoveAction extends Action
 
     public function run($id)
     {
-        $image = ContestantImage::findOne(['id' => $id]);
+        $image = AlbumImage::findOne(['id' => $id]);
         if ($image) {
             $filename = $image->image;
             $thumbname = $image->thumb;
-            if (ContestantImage::deleteAll(['id' => $id])) {
+            if (AlbumImage::deleteAll(['id' => $id])) {
                 if (unlink(\Yii::getAlias($this->uploadDir . $filename))) {
                     if (unlink(\Yii::getAlias($this->uploadDir . $thumbname))) {
                         Yii::$app->response->redirect(Yii::$app->request->referrer);

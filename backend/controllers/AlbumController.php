@@ -5,10 +5,13 @@ namespace backend\controllers;
 use Yii;
 use common\models\Album;
 use common\models\AlbumSearch;
+use common\models\AlbumImage;
 use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use backend\widgets\image\UploadAction;
+use backend\widgets\image\RemoveAction;
 /**
  * AlbumController implements the CRUD actions for Album model.
  */
@@ -31,6 +34,20 @@ class AlbumController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+            ],
+        ];
+    }
+    
+    public function actions() {
+        return [
+            'uploadimage' => [
+                'class' => UploadAction::className(),
+                'upload' => 'upload/teachers',
+            ],
+            
+            'remove' => [
+                'class' => RemoveAction::className(),
+                'uploadDir' => '@wwwdir/',
             ],
         ];
     }
@@ -72,7 +89,7 @@ class AlbumController extends Controller
         $model = new Album();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -91,6 +108,20 @@ class AlbumController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            if (isset(Yii::$app->request->post()['imageSort'])) {
+                foreach (Yii::$app->request->post()['imageSort'] as $key => $sortOrder) {
+                    AlbumImage::updateAll(['sort_order' => $sortOrder], ['id' => $key]);
+                }
+            }
+
+            $albumImage = AlbumImage::find()->where(['album_id' => $id])->orderBy(['sort_order' => SORT_ASC])->one();
+            if ($albumImage) {
+                $model->image = $albumImage->image;
+                $model->thumb = $albumImage->thumb;
+                $model->save();
+            }
+            
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

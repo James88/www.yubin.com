@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'end_at',
             'views',
             'author',
-            'jobtype',
+//            'jobtype',
         ],
     ]) ?>
 

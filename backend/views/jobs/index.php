@@ -25,7 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'company_id',
+            [
+                'attribute'=>'company_id',
+                'value'=>function($model){
+                    $rtn = \common\models\Company::findModel($model->id);
+                    if($rtn){
+                        return $rtn->name;
+                    }
+                    return "未知";
+                }
+            ],
             'zhiweiming',
             'gongzuodiqu',
             'zhiweixinzi',
@@ -36,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'gongzuojingyan',
             // 'jingzhengyoushi',
             // 'zhiweimiaoshu:ntext',
-            // 'create_at',
+            // 'created_at',
             // 'updated_at',
             // 'status',
 

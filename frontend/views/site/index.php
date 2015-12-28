@@ -674,13 +674,11 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
     </div>
  <!--师生风采-->
   <div class="pxbc m-b-20">
-    	<div class="pxbc-tit lm-tb"><span><a href="ssfc-list.html">更多</a></span>师生风采</div>
+      <div class="pxbc-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['album/index']); ?>">更多</a></span>师生风采</div>
    	<ul class="ssfc-nr ">
-        	<li><a href="#"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_66.jpg" width="218" height="147" alt=""></a></li>
-            <li><a href="#"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_66.jpg" width="218" height="147" alt=""></a></li>
-            <li><a href="#"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_66.jpg" width="218" height="147" alt=""></a></li>
-           <li><a href="#"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_66.jpg" width="218" height="147" alt=""></a></li>
-           <li><a href="#"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_66.jpg" width="218" height="147" alt=""></a></li>
+        <?php foreach ($teachers as $k => $v): ?>
+        <li><a href="<?= Yii::$app->urlManager->createUrl(['album/show','id'=>$v->id]); ?>"><img src="<?php echo $v->thumb; ?>" width="218" height="147" alt=""></a></li>
+        <?php endforeach; ?>
         </ul>
   </div>
 <!--友情链接-->

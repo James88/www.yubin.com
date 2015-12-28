@@ -46,7 +46,8 @@ class GoodsPriceLog extends \yii\db\ActiveRecord
     {
         return [
             [['goods_id', 'year', 'month', 'day', 'price'], 'required'],
-            [['goods_id', 'year', 'month', 'day', 'price', 'created_at', 'updated_at'], 'integer']
+            [['price'], 'number'],
+            [['goods_id', 'year', 'month', 'day', 'created_at', 'updated_at'], 'integer']
         ];
     }
 
@@ -57,13 +58,13 @@ class GoodsPriceLog extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'goods_id' => 'Goods ID',
-            'year' => 'Year',
-            'month' => 'Month',
-            'day' => 'Day',
-            'price' => 'Price',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'goods_id' => '产品ID',
+            'year' => '年',
+            'month' => '月',
+            'day' => '日',
+            'price' => '价格',
+            'created_at' => '添加时间',
+            'updated_at' => '修改时间',
         ];
     }
 }

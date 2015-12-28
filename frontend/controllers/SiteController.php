@@ -17,11 +17,14 @@ class SiteController extends Controller
         $bigCate = Category::find()->where(['is_nav'=>\common\models\YesNo::YES])->orderBy(['sort_order'=>SORT_ASC])->all();
         //首页轮播图
         $slider = Slider::find()->where(['place'=>0])->orderBy(['ord'=>SORT_ASC])->all();
+        //师生风采
+        $teachers = \common\models\Album::find()->orderBy(['id'=>SORT_DESC])->limit(5)->all();
         //友情链接
         $friendLink = \common\models\Friendlink::find()->where(['isshow'=>  \common\models\YesNo::YES])->orderBy(['ord'=>SORT_ASC])->all();
         return $this->render('index',[
             'bigCate'=>$bigCate,
             'slider'=>$slider,
+            'teachers'=>$teachers,
             'friendlink'=>$friendLink,
         ]);
     }
@@ -46,6 +49,14 @@ class SiteController extends Controller
      */
     public function actionMianze(){
         $model = $this->findSinglePage(3);
+        return $this->render('singlepage',['model'=>$model]);
+    }
+    
+    /*
+     * 造价员培训
+     */
+    public function actionZaojiayuan(){
+        $model = $this->findSinglePage(4);
         return $this->render('singlepage',['model'=>$model]);
     }
     

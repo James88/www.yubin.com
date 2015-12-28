@@ -26,23 +26,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'qiwangxinzi')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'gerenjianjie')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gerenjianjie')->textArea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'qitayaoqiu')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lianxidianhua')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'end_at')->textInput() ?>
+   
+    <?php// $form->field($model, 'end_at')->textInput() ?>
 
     <?= $form->field($model, 'views')->textInput() ?>
 
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'author')->textInput(['maxlength' => true,'value'=>'宇斌教育']) ?>
 
-    <?= $form->field($model, 'jobtype')->textInput(['maxlength' => true]) ?>
+    <?php// $form->field($model, 'jobtype')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

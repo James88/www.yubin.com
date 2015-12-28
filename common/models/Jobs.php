@@ -53,7 +53,7 @@ class Jobs extends \yii\db\ActiveRecord
     {
         return [
             [['company_id', 'zhiweiming'], 'required'],
-            [['company_id', 'create_at', 'updated_at', 'status'], 'integer'],
+            [['company_id', 'created_at', 'updated_at', 'status'], 'integer'],
             [['zhiweimiaoshu'], 'string'],
             [['zhiweiming', 'gongzuodiqu', 'zhiweixinzi', 'xueliyaoqiu', 'zhaopinrenshu', 'gongzuoxingzhi', 'xingbieyaoqiu', 'gongzuojingyan', 'jingzhengyoushi'], 'string', 'max' => 200]
         ];
@@ -66,20 +66,26 @@ class Jobs extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'company_id' => 'Company ID',
-            'zhiweiming' => 'Zhiweiming',
-            'gongzuodiqu' => 'Gongzuodiqu',
-            'zhiweixinzi' => 'Zhiweixinzi',
-            'xueliyaoqiu' => 'Xueliyaoqiu',
-            'zhaopinrenshu' => 'Zhaopinrenshu',
-            'gongzuoxingzhi' => 'Gongzuoxingzhi',
-            'xingbieyaoqiu' => 'Xingbieyaoqiu',
-            'gongzuojingyan' => 'Gongzuojingyan',
-            'jingzhengyoushi' => 'Jingzhengyoushi',
-            'zhiweimiaoshu' => 'Zhiweimiaoshu',
-            'create_at' => 'Create At',
-            'updated_at' => 'Updated At',
-            'status' => 'Status',
+            'company_id' => '招聘企业',
+            'zhiweiming' => '职位名称',
+            'gongzuodiqu' => '工作地区',
+            'zhiweixinzi' => '职位薪资',
+            'xueliyaoqiu' => '学历要求',
+            'zhaopinrenshu' => '招聘人数',
+            'gongzuoxingzhi' => '工作性质',
+            'xingbieyaoqiu' => '性别要求',
+            'gongzuojingyan' => '工作经验',
+            'jingzhengyoushi' => '竞争优势',
+            'zhiweimiaoshu' => '职位描述',
+            'created_at' => '添加时间',
+            'updated_at' => '修改时间',
+            'status' => '状态',
         ];
+    }
+    /*
+     * 关联 职位所属企业
+     */
+    public function getCompany(){
+        return $this->hasOne(Company::className(), ['id'=>'company_id']);
     }
 }

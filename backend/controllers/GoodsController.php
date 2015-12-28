@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Goods;
 use common\models\GoodsSearch;
+use common\models\GoodsPriceLog;
 use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -89,8 +90,24 @@ class GoodsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $oldPrice = $model->price;
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if($oldPrice !== $model->price){
+                //价格不同 就增加 价格修改日志
+                $goodspricelog = new GoodsPriceLog();
+                $goodspricelog->goods_id = $model->id;
+                $goodspricelog->price = $model->price;
+                $time = time();
+                $goodspricelog->year = date('Y',$time);
+                $goodspricelog->month = date('m',$time);
+                $goodspricelog->day = date('d',$time);
+                $x = $goodspricelog->save();
+                if(!$x){
+                    var_dump($goodspricelog);die;
+                }
+            }
+            
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

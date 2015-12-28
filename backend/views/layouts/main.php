@@ -1,3 +1,4 @@
+
 <?php
 use backend\assets\AppAsset;
 use yii\helpers\Html;
@@ -17,7 +18,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title."_网站管理后台") ?></title>
     <?php $this->head() ?>
 </head>
 <body class="theme-darkblue">
@@ -59,12 +60,12 @@ AppAsset::register($this);
         </div>
     </div>
 
-<!--    footer class="footer">
+    footer class="footer">
         <div class="container">
-        <p class="pull-left">&copy; Funshop <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy;  <?= date('Y') ?>由河南亿飞网络科技有限公司提供技术支持 </p>
+<!--        <p class="pull-right"><?= Yii::powered() ?></p>-->
         </div>
-    </footer-->
+    </footer
 
     <?php $this->endBody() ?>
 </body>
