@@ -63,15 +63,15 @@ class Video extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'thumb' => 'Thumb',
-            'keyword' => 'Keyword',
-            'content' => 'Content',
-            'author' => 'Author',
-            'status' => '0=隐藏,1=显示,2=推荐',
+            'title' => '标题',
+            'thumb' => '缩略图',
+            'keyword' => '关键词',
+            'content' => '内容',
+            'author' => '作者',
+            'status' => '状态',
             'views' => '浏览次数',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '添加时间',
+            'updated_at' => '修改时间',
         ];
     }
 }

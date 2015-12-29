@@ -16,8 +16,12 @@ use yii\data\ActiveDataProvider;
 class PriceController extends Controller{
 
     public function actionIndex($cid = ''){
-        
-        $where = [];
+        $key = Yii::$app->request->get('key');
+        if($key){
+            $where = ['like','name',$key];
+        }else{
+            $where = [];
+        }
         $query = Goods::find()->where($where);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -28,6 +32,7 @@ class PriceController extends Controller{
         return $this->render('index', [
             'models' => $dataProvider->getModels(),
             'pagination' => $dataProvider->pagination,
+            'totalItems' => $dataProvider->getTotalCount(),
         ]);
         
     }

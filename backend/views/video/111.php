@@ -1,11 +1,10 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model common\models\Video */
-/* @var $form yii\widgets\ActiveForm */
+/*
+ * @author Lmy
+ * QQ:6232967
+ * Create at 2015-12-29 13:15:01
+ */
 $this->registerJsFile("@web/js/plupload.full.min.js",['depends'=>['backend\assets\AppAsset']]);
 $this->registerJsFile("@web/js/qiniu.min.js",['depends'=>['backend\assets\AppAsset']]);
 $this->registerJsFile("@web/js/ui.js",['depends'=>['backend\assets\AppAsset']]);
@@ -20,7 +19,7 @@ var uploader = Qiniu.uploader({
     flash_swf_url: '/backend/web/js/Moxie.swf',
     dragdrop: true,
     chunk_size: '4mb',
-    uptoken_url: "/backend/web/video/uptoken",
+    uptoken_url: "/backend/web/test/uptoken",
     domain: "http://7xpdu5.com1.z0.glb.clouddn.com/",
     get_new_uptoken: false,
     // downtoken_url: '/downtoken',
@@ -58,15 +57,11 @@ var uploader = Qiniu.uploader({
             progress.setProgress(file.percent + "%", file.speed, chunk_size);
         },
         'UploadComplete': function() {
-            //$('#success').show();
+            $('#success').show();
         },
         'FileUploaded': function(up, file, info) {
             var progress = new FileProgress(file, 'fsUploadProgress');
             progress.setComplete(up, info);
-            var domain = up.getOption('domain');
-            var res = $.parseJSON(info);
-            var sourceLink = domain + res.key; //获取上传成功后的文件的Url
-            $("#video-content").val(sourceLink);
         },
         'Error': function(up, err, errTip) {
             $('table').show();
@@ -86,22 +81,11 @@ var uploader = Qiniu.uploader({
 
 JS;
 $this->registerJs($js);
-
 ?>
-
-<div class="video-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'thumb')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
-    <div id="container" style="position: relative;">
+<div id="container" style="position: relative;">
     <a class="btn btn-default btn-lg " id="pickfiles" href="#" style="position: relative; z-index: 1;">
         <i class="glyphicon glyphicon-plus"></i>
-        <span>上传视频文件</span>
+        <span>选择文件</span>
     </a>
 </div>
 <div style="display:none" id="success" class="col-md-12">
@@ -113,30 +97,15 @@ $this->registerJs($js);
     <table class="table table-striped table-hover text-left" style="margin-top:40px;display:none">
         <thead>
           <tr>
-            <th class="col-md-4">文件名</th>
-            <th class="col-md-2">大小</th>
-            <th class="col-md-6">详情</th>
+            <th class="col-md-4">Filename</th>
+            <th class="col-md-2">Size</th>
+            <th class="col-md-6">Detail</th>
           </tr>
         </thead>
-        <style>#fsUploadProgress img{width:50px;height:50px;}</style>
         <tbody id="fsUploadProgress">
         </tbody>
     </table>
 </div>
-    <?= $form->field($model, 'content')->hiddenInput()->label(false); ?>
-
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->dropDownList(common\models\Status::labels()) ?>
-
-    <?= $form->field($model, 'views')->textInput() ?>
 
 
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? '添加' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-</div>

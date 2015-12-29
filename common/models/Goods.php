@@ -76,4 +76,10 @@ class Goods extends \yii\db\ActiveRecord
     static public function findModel($pk){
         return self::findOne($pk);
     }
+    
+    //关联 价格日志
+    public function getPriceLog($id,$year,$month){
+        return GoodsPriceLog::find()->where(['id'=>$id,'month'=>$month,'year'=>$year])->orderBy(['id'=>SORT_DESC])->one();
+    }
+    
 }

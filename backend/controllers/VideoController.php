@@ -9,6 +9,7 @@ use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use Qiniu\Auth;
 /**
  * VideoController implements the CRUD actions for Video model.
  */
@@ -127,4 +128,20 @@ class VideoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    /*
+     * 上传token
+     */
+    public function actionUptoken(){
+        header('Content-type: text/json');
+        //Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $accessKey = 'RDFVgI2CMVHF-79JMXbIFpy9aVz4NJSTXc_wI6u2';
+        $secretKey = 'l8vY4A3juunUVePBdP298RurE4f-xznX93_eT5mN';
+        $auth = new Auth($accessKey, $secretKey);
+        $bucket = "yubinzaojia";
+        $token = $auth->uploadToken($bucket);
+        $rtn['uptoken'] = $token;
+        echo json_encode($rtn);
+    }
+    
 }

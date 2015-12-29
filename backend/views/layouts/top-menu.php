@@ -116,6 +116,22 @@ $menuItemsMain = [
           
         ],
     ],
+    [
+        'label' => '试听管理',
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '试听管理',
+                'url' => ['/video/index'],
+            ],
+            [
+                'label' => '添加试听课程',
+                'url' => ['/video/create'],
+            ],
+          
+        ],
+    ],
     
     [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
