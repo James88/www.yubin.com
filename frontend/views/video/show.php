@@ -36,31 +36,8 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title];
         
      </div>
      <div class="container-right f-r">
-    	 <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>资料下载</div>	
-            <div><img src="images/yubin_58.jpg" width="286" height="101" alt=""/></div>
-            <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
-            </div>  
-         <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>报考指南</div>	
-           <div><img src="images/yubin_55.jpg" width="280" height="104" alt=""/></div>
-            <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
-            </div> 
+        <?php echo $this->render('/layouts/_pr_ziliaoxiazai'); ?>
+        <?php echo $this->render('/layouts/_pr_baokaozhinan'); ?>
      </div>
      <div class="clear"></div>
 </div>

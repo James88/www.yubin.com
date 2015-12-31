@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\JobsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Jobs';
+$this->title = '职位管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jobs-index">

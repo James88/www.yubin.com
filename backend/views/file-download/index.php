@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\FileDownloadSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'File Downloads';
+$this->title = '下载文件管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="file-download-index">

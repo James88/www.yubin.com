@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\GoodsPriceLogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Goods Price Logs';
+$this->title = '价格变动日志';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="goods-price-log-index">

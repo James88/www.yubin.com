@@ -156,6 +156,10 @@ $menuItemsMain = [
                 'label' => '友情链接管理',
                 'url' => ['/friendlink'],
             ],
+            [
+                'label' => '网页广告管理',
+                'url' => ['/ads'],
+            ],
         ],
     ],
 ];

@@ -23,7 +23,8 @@
         "devgroup/yii2-dropzone": "*",
         "yiisoft/yii2-imagine": "^2.0",
         "kartik-v/yii2-widget-datetimepicker": "*",
-        "kartik-v/yii2-widget-datepicker": "@dev"
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "mongosoft/yii2-upload-behavior": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

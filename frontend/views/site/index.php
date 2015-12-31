@@ -272,7 +272,16 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
       </div>
     </div>
     <!--广告01-->
-    <div class="ad01"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/ad01.jpg" width="1170" height="91" alt=""><div class="clear"></div></div>
+    <div class="ad01">
+        <?php
+            $ads = \common\models\Ads::find()->where(['id'=>1])->one();
+            if($ads){
+        ?>
+        <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="91" alt=""></a>
+        <div class="clear"></div>
+            <?php } ?>
+       
+    </div>
     <!--培训项目相关-->
     <div class="pxxmxg clear">
     	<div class="pxxm-left f-l">
@@ -624,7 +633,14 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
         <?php endforeach; ?>     
     </div>
     </div>
-    <div class="ad01"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/ad02.jpg" width="1170" height="69" alt=""></div>
+    <div class="ad01">
+        <?php
+            $ads = \common\models\Ads::find()->where(['id'=>2])->one();
+            if($ads){
+        ?>
+        <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="69" alt=""></a>
+            <?php } ?>
+    </div>
 </div>
 <?php 
 $js = <<< JS

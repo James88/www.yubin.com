@@ -17,9 +17,26 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title]
         <div class="clear"></div>
     </div>
     <div class="container-right f-r">
-        <?php $action =  Yii::$app->controller->action->id; ?>
-       <?php echo $this->render('/layouts/_pr_kaibanxinxi'); ?>
-       <?php echo $this->render('/layouts/_pr_baokaozhinan'); ?>
+    <?php 
+        $action =  Yii::$app->controller->action->id; 
+        if($action == 'about'){
+            $fileArr[] = "/layouts/_pr_zhentifabu";
+            $fileArr[] = "/layouts/_pr_baokaozhinan";
+        }else if($action == 'contact'){
+            $fileArr[] = "/layouts/_pr_kaibanxinxi";
+            $fileArr[] = "/layouts/_pr_xinxijia";
+        }else if($action == 'mianze'){
+            $fileArr[] = "/layouts/_pr_zhentifabu";
+            $fileArr[] = "/layouts/_pr_remenzhuanti";
+        }else{
+            $fileArr[] = "/layouts/_pr_kaibanxinxi";
+            $fileArr[] = "/layouts/_pr_baokaozhinan";
+        }
+        foreach($fileArr as $file){
+            echo $this->render($file);
+        }
+    ?>
+       
     </div>
     <div class="clear"></div>
 </div>

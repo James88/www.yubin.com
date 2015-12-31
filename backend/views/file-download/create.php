@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\FileDownload */
 
-$this->title = 'Create File Download';
-$this->params['breadcrumbs'][] = ['label' => 'File Downloads', 'url' => ['index']];
+$this->title = '文件下载';
+$this->params['breadcrumbs'][] = ['label' => '下载管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="file-download-create">

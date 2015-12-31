@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\KaoshiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kaoshis';
+$this->title = '考试管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kaoshi-index">

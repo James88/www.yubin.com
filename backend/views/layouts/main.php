@@ -34,7 +34,7 @@ AppAsset::register($this);
 						
                         <a id="drop1" href="#collapseOne" data-toggle="collapse" aria-expanded="true"><h4>首页<b class="caret"></h4></b></a>
                             <ul id="collapseOne" aria-expanded="true" class="collapse in">
-                              <li><a tabindex="-1" href="/backend/web/">概况</a></li>
+                              <li><a tabindex="-1" href="/backend/web/">后台首页</a></li>
 <!--                              <li><a tabindex="-1" href="#">Another action</a></li>
                               <li><a tabindex="-1" href="#">Something else here</a></li>
                               <li><a tabindex="-1" href="#">Separated link</a></li>-->
@@ -63,7 +63,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy;  <?= date('Y') ?>由河南亿飞网络科技有限公司提供技术支持 </p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <!--<p class="pull-right"><?= Yii::powered() ?></p>-->
         </div>
     </footer>
 

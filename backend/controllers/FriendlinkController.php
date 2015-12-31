@@ -8,7 +8,7 @@ use common\models\FriendlinkSearch;
 use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * FriendlinkController implements the CRUD actions for Friendlink model.
  */
@@ -23,6 +23,16 @@ class FriendlinkController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            
         ];
     }
 

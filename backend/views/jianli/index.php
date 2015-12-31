@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\JianliSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Jianlis';
+$this->title = '简历管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jianli-index">

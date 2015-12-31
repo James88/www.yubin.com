@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Kaoshi */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Kaoshis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '考试管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kaoshi-view">

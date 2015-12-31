@@ -6,7 +6,7 @@
  */
 ?>
 <div class="rmzt">
-    <div class="rmzt-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>8]); ?>">更多</a></span>报考指南</div>	
+    <div class="rmzt-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['price/index']); ?>">更多</a></span>建筑材料信息价</div>	
     <div><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_55.jpg" width="280" height="104" alt="" /></div>
     <ul class="kbxx-nr">
         <?php $goods = \common\models\Goods::find()->orderBy(['updated_at'=>SORT_DESC])->limit(11)->all(); ?>

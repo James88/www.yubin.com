@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Friendlink */
 
-$this->title = 'Create Friendlink';
-$this->params['breadcrumbs'][] = ['label' => 'Friendlinks', 'url' => ['index']];
+$this->title = '添加链接';
+$this->params['breadcrumbs'][] = ['label' => '链接管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="friendlink-create">

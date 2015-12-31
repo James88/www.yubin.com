@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\SinglepageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Singlepages';
+$this->title = '单页管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="singlepage-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Singlepage', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增单页面', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

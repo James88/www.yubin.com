@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model common\models\Slider */
 
 $this->title = '添加轮播图';
-$this->params['breadcrumbs'][] = ['label' => 'Sliders', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '轮播图管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="slider-create">

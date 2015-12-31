@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\AdsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ads';
+$this->title = '广告管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ads-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Ads', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加广告', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

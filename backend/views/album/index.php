@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\AlbumSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Albums';
+$this->title = '师生风采';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="album-index">

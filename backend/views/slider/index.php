@@ -7,14 +7,14 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\SliderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Sliders';
+$this->title = '轮播图管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="slider-index">
 
    
     <p>
-        <?= Html::a('Create Slider', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增轮播图', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

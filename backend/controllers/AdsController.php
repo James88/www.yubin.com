@@ -8,6 +8,8 @@ use common\models\AdsSearch;
 use backend\components\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\web\UploadedFile;
 
 /**
  * AdsController implements the CRUD actions for Ads model.
@@ -21,6 +23,15 @@ class AdsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -61,9 +72,22 @@ class AdsController extends Controller
     public function actionCreate()
     {
         $model = new Ads();
+        
+        
+        if ($model->load(Yii::$app->request->post())) {
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if (isset($_FILES) && $_FILES) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                if($model->imageFile){
+                    $model->upload();
+                }
+            }
+            if($model->ord == ""){
+                $model->ord = 0;
+            }
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -80,10 +104,18 @@ class AdsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        if ($model->load(Yii::$app->request->post())) {
+            
+            if (isset($_FILES) && $_FILES) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                if($model->imageFile){
+                    $model->upload();
+                }
+            }
+            if($model->save()){
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }else {
             return $this->render('update', [
                 'model' => $model,
             ]);
