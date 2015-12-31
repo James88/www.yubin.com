@@ -30,11 +30,11 @@ use yii\widgets\ActiveForm;
 
     <?php echo $form->field($model, 'n1')->textarea(['maxlength' => true]) ?>
 
-    <?php //echo $form->field($model, 'n2')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'n2')->textInput(['maxlength' => true]) ?>
 
-    <?php //echo $form->field($model, 'n3')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'n3')->textInput(['maxlength' => true]) ?>
 
-    <?php //echo $form->field($model, 'n4')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'n4')->textInput(['maxlength' => true]) ?>
 
     <?php //echo $form->field($model, 'n5')->textInput(['maxlength' => true]) ?>
 

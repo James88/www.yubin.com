@@ -95,9 +95,9 @@ $this->registerJs($js);
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'thumb')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'thumb')->textInput(['maxlength' => true])->label('输入数字，如需要第5秒的视频作为封面截图，就输入5'); ?>
 
-    <?= $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'keyword')->textInput(['maxlength' => true]) ?>
     <div id="container" style="position: relative;">
     <a class="btn btn-default btn-lg " id="pickfiles" href="#" style="position: relative; z-index: 1;">
         <i class="glyphicon glyphicon-plus"></i>
@@ -125,7 +125,7 @@ $this->registerJs($js);
 </div>
     <?= $form->field($model, 'content')->hiddenInput()->label(false); ?>
 
-    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList(common\models\Status::labels()) ?>
 

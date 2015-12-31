@@ -24,29 +24,13 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title];
                 </div>
             </div>
 
-           <script type="text/javascript" src="http://yandex.st/swfobject/2.2/swfobject.min.js"></script>
-    <script type="text/javascript">
-        var flashvars = {
-            src: "http://movie.ks.js.cn/flv/other/1_0.flv"
-        };
-        var params = {
-            allowFullScreen: true
-            , allowScriptAccess: "always"
-            , bgcolor: "#000000"
-        };
-        var attrs = {
-            name: "player"
-        };
-
-        swfobject.embedSWF("GrindPlayer.swf", "player", "854", "480", "10.2", null, flashvars, params, attrs);
-    </script>
-    <div id="player"></div>
-          
+           
+   
             <!--<div class="st-video-key">关键词：<span>宇斌教育造价员培训 </span><span>基础课程试听</span></div>-->
             <div class="xian m-t-20"></div>
 <!--         <div class="zp-detail"><label class="fany">上一篇：</label><a href="#">造价专业有前途吗</a></div>
         <div class="zp-detail"><label class="fany">下一篇：</label><a href="#">造价专业有前途吗</a></div> -->
-<div class="fhlb"><a href="<?= Yii::$app->urlManager->createUrl(['video/index']); ?>">返回列表</a></div> 
+<div class="fhlb" style="margin-top:10px;"><a href="<?= Yii::$app->urlManager->createUrl(['video/index']); ?>">返回列表</a></div> 
       </div>
         <div class="clear"></div>
         

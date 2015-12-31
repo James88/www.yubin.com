@@ -199,6 +199,13 @@ class Utils
         }
         return date($type, $time);
     }
+    /*$date1, $date2 unix timestamp
+     * 2个日期之间间隔的天数
+     */
+    static public function daysbetweendates($date1, $date2){ 
+        $days = ceil(abs($date1 - $date2)/86400); 
+        return $days; 
+    }
 }
 ?>
 

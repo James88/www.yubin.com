@@ -139,19 +139,7 @@ $menuItemsMain = [
         'active' => false,
         //'visible' => Yii::$app->user->can('haha'),
         'items' => [
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Payment'),
-//                'url' => ['/payment'],
-//            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Shipment'),
-//                'url' => ['/shipment'],
-//            ],
-//            [
-//                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Auth Role'),
-//                'url' => ['/auth'],
-//            ],
-            
+
             [
                 'label' => '站点配置',
                 'url' => ['/config/update','id'=>1],
@@ -159,6 +147,10 @@ $menuItemsMain = [
             [
                 'label' => '<i class="fa fa-lock"></i> ' . "首页轮播图",
                 'url' => ['/slider'],
+            ],
+            [
+                'label' => '<i class="fa fa-lock"></i> ' . "首页考试提醒",
+                'url' => ['/kaoshi'],
             ],
             [
                 'label' => '友情链接管理',

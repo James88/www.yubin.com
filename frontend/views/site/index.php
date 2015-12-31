@@ -14,6 +14,15 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 	<div class="first-screen">
         <div class="first-left f-l">
         <div class="all-sort-list">
+            <?php 
+            function getCatUrl($cate){
+                if($cate->redirect_url){
+                    return $cate->redirect_url;
+                }
+                
+                return Yii::$app->urlManager->createUrl(['news/index','cid'=>$cate->id]);
+            } 
+            ?>
             <?php foreach ($bigCate as $k => $v): ?>
             
             <div class="item<?php if($k == 0){echo " bo";} ?>">
@@ -26,7 +35,8 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
                         $secondCate = Category::find()->where(['parent_id'=>$v->id])->orderBy(['sort_order'=>SORT_ASC])->all();
                         foreach ($secondCate as $kk => $vv): ?>
 						<dl class="fore<?php echo $kk+1; ?>">
-                            <dt><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>$vv->id]); ?>"><?= $vv->name; ?></a></dt>
+                            
+                            <dt><a href="<?= getCatUrl($vv); ?>"><?= $vv->name; ?></a></dt>
 							<dd>
                                 <?php 
                                 //循环三级分类
@@ -34,7 +44,7 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 
                                 foreach ($thirdCate as $kkk => $vvv): ?>
                                        
-                                <em><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>$vvv->id]); ?>"><?= $vvv->name; ?></a></em>
+                                <em><a href="<?= getCatUrl($vvv); ?>"><?= $vvv->name; ?></a></em>
                                  <?php endforeach; ?>
                             </dd>
 						</dl>
@@ -96,24 +106,50 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
         	<div class="kstx-tit"><h2>考试提醒</h2></div>
             <div class="kstx-bt">
             	<div class="f-l bt1">考试名称</div>
-                <div class="f-l bt1">考试时间</div>
+                <div class="f-l bt1">考试状态</div>
             </div>
             <div class="kstx-nr">
-            	<div class="f-l bt2">造价员</div>
-                <div class="f-l bt2">12月5日截止</div>
-                <div class="f-l bt2">消防工程师</div>
-                <div class="f-l bt2">10月16日开始</div>
-                <div class="f-l bt2">监理工程师	</div>
-                <div class="f-l bt2">正在报名中</div>
-                <div class="f-l bt2">一级建造师</div>
-                <div class="f-l bt2">12月5日截止</div>
-                <div class="f-l bt2">学历教育</div>
-                <div class="f-l bt2">12月16日开始</div>
+                <?php
+                //根据时间判断 要输出的内容
+                function getStatus($baomingshijian,$jiezhishijian,$kaoshishijian){
+                    $baomingshijian = strtotime($baomingshijian);
+                    $jiezhishijian = strtotime($jiezhishijian);
+                    $kaoshishijian = strtotime($kaoshishijian);
+                    $currenttime = time();
+                    //还没开始报名
+                    if($baomingshijian > $currenttime){
+                        $str = date('m',$baomingshijian)."月".date('d',$baomingshijian)."号报名";
+                    }else if(($baomingshijian < $currenttime) && ($currenttime < $jiezhishijian)){
+                        //报名截止前的时间
+                        $str = date('m',$jiezhishijian)."月".date('d',$jiezhishijian)."号截止报名";
+                    }else if($kaoshishijian>$currenttime){
+                        //考试前的时间
+                        $str = date('m',$kaoshishijian)."月".date('d',$kaoshishijian)."号考试";
+                    }else{
+                        //已经考试过了
+                        $str = "考试已结束！";
+                    }
+                    return "<span title='考试时间".date("Y-m-d",$kaoshishijian)."'>".$str."</span>";
+                }
+                //查找考试
+                $kaoshi = common\models\Kaoshi::find()->where(['is_reminder'=>0])->orderBy(['ord'=>SORT_ASC])->limit(5)->all();
+                foreach($kaoshi as $k=>$v){
+                ?>
+                <div class="f-l bt2"><?= $v->title; ?></div>
+                <div class="f-l bt2"><?= getStatus($v->baomingshijian, $v->jiezhishijian, $v->kaoshishijian); ?></div>
+                <?php } ?>
+                
             </div>
+            <?php 
+                    $daojishi = common\models\Kaoshi::find()->where(['is_reminder'=>1])->orderBy(['id'=>SORT_DESC])->one();
+                if($daojishi){
+                    
+            ?>
             <div class="djs">
-            	<h2><span>二级消防工程师</span>倒计时</h2>
-                <div class="djs-nr">128<span>天</span></div>
+                <h2><span><?= $daojishi->title; ?></span>倒计时</h2>
+                <div class="djs-nr"><?= common\components\Utils::daysbetweendates(strtotime($daojishi->kaoshishijian),time()); ?><span>天</span></div>
             </div>
+            <?php } ?>
         </div>
     </div>
  <!--培训班次-->
@@ -172,172 +208,66 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
             </dl>
         </div>
         
-      <div class="third-right f-l">
-        	<div class="wlst-tit lm-tb"><span><a href="#">更多</a></span>网络试听</div>
-            <div class="wlst-sp"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_37.jpg" width="295" height="196" alt=""></div>
-            <div class="wlst-nr">
-            	<div class="wlst-nr-tit"><span><input type="button" class="wlst-btn" value="网络试听"></span>这里是试听课的栏目名称</div>
+        <div class="third-right f-l">
+            <div class="wlst-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['video/index']); ?>">更多</a></span>网络试听</div>
+            <?php $video = \common\models\Video::find()->where(['status'=>  \common\models\Status::STATUS_REC])->one(); ?>
+            <?php if($video){ ?>
+            <div class="wlst-sp">
+                <a href="<?= Yii::$app->urlManager->createUrl(['video/show','id'=>$video->id]); ?>">
+                    <img src="<?= $video->content."?vframe/jpg/offset/".$video->thumb; ?>" width="295" height="196" />
+                </a>
             </div>
-      </div>
+            <div class="wlst-nr">
+                <div class="wlst-nr-tit"><a href="<?= Yii::$app->urlManager->createUrl(['video/show','id'=>$video->id]); ?>"><span><input type="button" class="wlst-btn" value="网络试听"></span><?= $video->title; ?></a></div>
+            </div>
+            <?php }else{echo "暂无视频推荐!";} ?>
+        </div>
     </div>
 <!--建筑材料信息价，招聘，求职-->    
     <div class="jz-zp-qz m-b-20">
     	<div class="third-left f-l">
-       	<div class="kbxx-tit lm-tb"><span><a href="#">更多</a></span>建筑材料信息价</div>	
+            <div class="kbxx-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['price/index']); ?>">更多</a></span>建筑材料信息价</div>	
             <ul class="kbxx-nr">
-            	<li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li> 
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li> 
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-                <li><a href="#">鹤壁zui市2015年2季度建筑工程信息价……</a></li>
-        </ul>
+                <?php $goods = \common\models\Goods::find()->orderBy(['updated_at'=>SORT_DESC])->limit(11)->all(); ?>
+                <?php foreach ($goods as $k => $v): ?>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['price/index','key'=>$v->name]); ?>"><?= date("Y",$v->updated_at); ?>年<?= date("m",$v->updated_at); ?>月<?= $v->name; ?>最新报价</a></li>
+                <?php endforeach; ?>
+            </ul>
       </div>
       <div class="third-middle f-l">
-      	<div class="zxzp-tit lm-tb"><span><a href="#">更多</a></span>最新招聘</div>
+          <div class="zxzp-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['job/index']); ?>">更多</a></span>最新招聘</div>
         <ul class="zxzp-nr">
-        	<li><a href="#"><span>2016-02-06</span>
+            <?php 
+            //读取招聘信息
+            $jobs = common\models\Jobs::find()->where('status>0')->orderBy(['id'=>SORT_DESC])->limit(11)->all();
+            ?>
+            <?php foreach ($jobs as $k => $v): ?>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['job/show','id'=>$v->id]); ?>"><span><?= common\components\Utils::dateFormat($v->created_at,0); ?></span>
         	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
+                    <?= $v->company->name; ?>
        	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[招聘]</label>
-       	    郑州宇斌造价第二建筑分队
-       	    <label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
+            <label class="zx-ys"><?= $v->zhiweiming; ?></label>
+        	</a>
+            </li>
+            <?php endforeach; ?>
         </ul>	
       </div>
       <div class="third-right f-l">
-      	<div class="zxqz-tit lm-tb"><span><a href="#">更多</a></span>最新求职</div>
+          <div class="zxqz-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['jianli/index']); ?>">更多</a></span>最新求职</div>
         <ul class="zxzp-nr">
-        	 <li><a href="#"><span>2016-02-06</span>
+            <?php 
+            //读取求职信息
+            $jianli = common\models\Jianli::find()->orderBy(['id'=>SORT_DESC])->limit(11)->all();
+            ?>
+            <?php foreach ($jianli as $k => $v): ?>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['jianli/show','id'=>$v->id]); ?>"><span><?= common\components\Utils::dateFormat($v->created_at,0); ?></span>
         	    <label class="zx-fl">[求职]</label>
-       	    郑某
+                    <?= $v->xingming; ?>
        	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>    
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
+            <label class="zx-ys"><?= $v->yingpingzhiwei; ?></label>
         	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-           <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-           <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-           <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-           <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
-            <li><a href="#"><span>2016-02-06</span>
-        	    <label class="zx-fl">[求职]</label>
-       	    郑某
-       	    <label class="zx-m-f-l">应聘</label>
-        	    <label class="zx-ys">造价员</label>
-        	</a></li>
+            <?php endforeach; ?>
+            
         </ul>	
       </div>
     </div>
@@ -636,38 +566,42 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 <!--右侧相关-->
         <div class="pxxm-right f-r">
 <!--热门专题-->  
-   		  <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>热门专题</div>	
-            <div><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_47.jpg" width="290" height="131" alt=""></div>
-            <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
+            <div class="rmzt">
+                <div class="rmzt-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>9]); ?>">更多</a></span>热门专题</div>	
+                <div><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_47.jpg" width="290" height="131" alt=""></div>
+                <ul class="kbxx-nr">
+                    <?php 
+                        $remenzhuanti = \common\models\News::getNews(9, 5);
+                        foreach($remenzhuanti as $k=>$v){
+                    ?>
+                    <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->title; ?></a></li>
+                    <?php } ?>
+                </ul>	
             </div>
           <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>报考指南</div>	
+              <div class="rmzt-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>8]); ?>">更多</a></span>报考指南</div>	
             <div><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_55.jpg" width="280" height="104" alt=""></div>
             <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
+                <?php 
+                    $baokaozhinan = \common\models\News::getNews(8, 5);
+                    foreach($baokaozhinan as $k=>$v){
+                ?>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->title; ?></a></li>
+                <?php } ?>
+  
+            </ul>	
             </div> 
           <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>资料下载</div>	
+              <div class="rmzt-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['file-download/index']); ?>">更多</a></span>资料下载</div>	
             <div><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_58.jpg" width="286" height="101" alt=""></div>
             <ul class="zlxz-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
+                <?php 
+                    $wenjian = \common\models\FileDownload::find()->orderBy(['created_at'=>SORT_DESC])->limit(5)->all();
+                    foreach($wenjian as $k=>$v){
+                ?>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['file-download/index','id'=>$v->id]); ?>"><?= $v->title; ?></a></li>
+                <?php } ?>
+            </ul>	
             </div>      	     	      	
         </div>
         <div class=" clear"></div>

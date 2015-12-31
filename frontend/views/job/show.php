@@ -67,46 +67,20 @@ $this->params['breadcrumbs'][] = ['label'=>$model->zhiweiming];
 	
 		<div class="jg m-t-20">敬告：此信息只为找工作的朋友提供参考，本网站不对其真实性和有效性负法律上的责任。</div>
         <div class="xian"></div>
-        <div class="zp-detail">上一篇:<a href="#"><label class="zx-fl" >[招聘]</label>郑州宇斌造价第二建筑分队<label class="zx-m-f-l">诚招</label>
+<!--        <div class="zp-detail">上一篇:<a href="#"><label class="zx-fl" >[招聘]</label>郑州宇斌造价第二建筑分队<label class="zx-m-f-l">诚招</label>
         	    <label class="zx-ys">造价员</label></a></div>
         <div class="zp-detail">下一篇:<a href="#"><label class="zx-fl" >[招聘]</label>郑州宇斌造价第二建筑分队<label class="zx-m-f-l">诚招</label>
-        	    <label class="zx-ys">造价员</label></a></div> 
-             <div class="fhlb"><a href="#">返回列表</a></div>
+        	    <label class="zx-ys">造价员</label></a></div> -->
+            <div class="fhlb m-t-20"><a href="<?= Yii::$app->urlManager->createUrl(['job/index']); ?>">返回列表</a></div>
             
             </div>      
         	
         <div class="clear"></div>
     </div>
     <div class="container-right f-r">
-    	<div class="kbxx-list">
-        	<div class="kbxx-list-tit lm-tb"><span><a href="#">更多</a></span>开班信息</div>	
-            <div class="kbxx-list-img"><img src="images/kbxx.gif" width="345" height="103" alt=""/></div>
-            <ul class="kbxx-list-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>
-      </div>
-      <div class="rmzt">
-            	<div class="rmzt-tit lm-tb"><span><a href="#">更多</a></span>报考指南</div>	
-            <div><img src="images/yubin_55.jpg" width="280" height="104" alt=""/></div>
-            <ul class="kbxx-nr">
-            	<li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li> 
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-                <li><a href="#">土建实训第三期6月8号开班了</a></li>
-        </ul>	
-            </div> 
-        </div>
+    	<?php echo $this->render('/layouts/_pr_kaibanxinxi'); ?>
+        <?php echo $this->render('/layouts/_pr_baokaozhinan'); ?>
+    </div>
     </div>
 	<div class="clear"></div>
 </div>

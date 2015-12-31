@@ -60,12 +60,12 @@ AppAsset::register($this);
         </div>
     </div>
 
-    footer class="footer">
+    <footer class="footer">
         <div class="container">
         <p class="pull-left">&copy;  <?= date('Y') ?>由河南亿飞网络科技有限公司提供技术支持 </p>
-<!--        <p class="pull-right"><?= Yii::powered() ?></p>-->
+        <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
-    </footer
+    </footer>
 
     <?php $this->endBody() ?>
 </body>

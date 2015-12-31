@@ -27,19 +27,22 @@ AppAsset::register($this);
 <div class="header">
     <div class="header-top">
         <div class="f-l">
-            <img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_04.jpg" width="296" height="84" alt=""/> 
+            <a href="/"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_04.jpg" width="296" height="84" /></a>
         </div>
           <div class="f-r">
            <div class="search-panel">
-                <ul class="search-panel-li clearfix">
+<!--                <ul class="search-panel-li clearfix">
                     <li><a tip="fac_price" href="javascript:void(0);" class="selected">造价员</a></li>
                     <li><a tip="gov_search" href="javascript:void(0);">建造师</a></li>
                     <li><a tip="gov_search"  href="javascript:void(0);">八大员</a></li>
                     <li><a tip="fac" href="javascript:void(0);">学历教育</a></li>
                    <li><a tip="xunjia" href="javascript:void(0);">招聘信息</a></li>
-                </ul>
-               <div class="search-panel-input">
-                  <input type="text" id="key" placeholder="请输入关键字 如“ 造价员培训 ”" class="txt-inp" /><input type="button" onclick="toSearch();" class="btn-search" value="" />
+                </ul>-->
+                <div class="search-panel-input">
+                    <form action="<?= Yii::$app->urlManager->createUrl(['search/index']); ?>" method="get">
+                        <input type="text" id="key" name="key" placeholder="请输入关键字 如“ 造价员培训 ”" value="<?php if(isset($_GET['key'])){echo $_GET['key'];}; ?>" class="txt-inp" />
+                        <input type="submit" class="btn-search" value="" />
+                    </form>
                 </div>
             </div>
           </div>
@@ -63,7 +66,7 @@ AppAsset::register($this);
 <div class="foot"> 
 	<div class="foot-zt">
         <div class="foot-left f-l">
-        	<div class="foot-left-top"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/foot-logo.jpg" width="144" height="63" alt=""/></div>
+            <div class="foot-left-top"><a href="/"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/foot-logo.jpg" width="144" height="63" /></a></div>
             <ul  class="foot-left-bottom">
                 <li><a href="<?= Yii::$app->urlManager->createUrl(['site/about']); ?>">关于我们</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl(['site/contact']); ?>">联系我们</a></li>
@@ -77,10 +80,10 @@ AppAsset::register($this);
         	<div class="foot-right-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/weixin.jpg" width="121" height="156" alt=""/></div>
             <div class="foot-right-r">
             	<div class="jl-qq">宇斌交流群</div>
-                <p class="jl-nr">66888889</p>
+                <p class="jl-nr"><?php echo $this->params['siteconfig']['n2']; ?></p>
                 <div class="jl-dh">商务联系方式</div>
-                <p class="jl-nr">黄老师：15088888888</p>
-                <p class="jl-nr">刘老师：15266666666</p>
+                <p class="jl-nr">黄老师：<?php echo $this->params['siteconfig']['n3']; ?></p>
+                <p class="jl-nr">刘老师：<?php echo $this->params['siteconfig']['n4']; ?></p>
             </div>
         </div>
     </div>
@@ -100,6 +103,7 @@ AppAsset::register($this);
         <li><a href="#top" class="kefu-top" title="回网页顶部" rel="nofollow">返回顶部</a></li>
     </ul>
 </div>
+<div style="display: none;"><?php echo $this->params['siteconfig']['tongji']; ?></div>
 <?php $this->endBody() ?>
 </body>
 </html>

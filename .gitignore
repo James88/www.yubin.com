@@ -28,5 +28,5 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
-/assets
+/assets/
 /backend/web/assets/
