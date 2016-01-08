@@ -32,7 +32,6 @@ class Slider extends \yii\db\ActiveRecord
             [
                 'class' => TimestampBehavior::className(),
             ],
-
         ];
     }
     /*
@@ -40,7 +39,8 @@ class Slider extends \yii\db\ActiveRecord
      */
     public static function places(){
         return [
-            '首页'
+            'PC首页',
+            '移动版首页'
         ];
     }
     

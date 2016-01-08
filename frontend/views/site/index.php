@@ -156,10 +156,10 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
     <div class="pxbc m-b-20">
     	<div class="pxbc-tit lm-tb">培训班次</div>
     	<ul class="pxbc-nr ">
-        	<li><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_20.jpg" alt=""></li>
-            <li><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_22.jpg" alt=""></li>
-            <li><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_24.jpg" alt=""></li>
-            <li><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_26.jpg" alt=""></li>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/page','id'=>5]); ?>" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_20.jpg" alt=""></a></li>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/page','id'=>6]); ?>" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_22.jpg" alt=""></a></li>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/page','id'=>7]); ?>" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_24.jpg" alt=""></a></li>
+            <li><a href="<?= Yii::$app->urlManager->createUrl(['site/page','id'=>8]); ?>" target="_blank"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_26.jpg" alt=""></a></li>
         </ul>
     </div>
 <!--开班信息、综合新闻、网络试听-->

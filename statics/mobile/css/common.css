@@ -1,0 +1,318 @@
+/*--公共样式--*/
+html {
+	-webkit-tap-highlight-color: transparent;
+	overflow-x: hidden;
+	height: 100%;
+	min-width: 6.4rem;
+	font-size: 312.5%;
+	background-color: #fff;
+}
+body {
+	color: #333;
+	font-size: .28rem;
+	line-height: 1.8;
+	font-family: arial, Microsoft Yahei;
+	overflow:hidden;
+	background:#fff;
+}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+	margin: 0;
+	padding: 0
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+img {
+	vertical-align: middle;
+	border: 0
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal
+}
+ul, ol, li {
+	list-style: none
+}
+em, i {
+	font-style: normal
+}
+img {
+	border: none
+}
+input, img {
+	vertical-align: middle
+}
+input, select, textarea , button{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-appearance: none;
+	border: 0;
+	border-radius: 0
+}
+textarea:focus {
+	outline: 0
+}
+a {
+	text-decoration: none;
+	outline: 0
+}
+a:active, a:hover, a.current {
+	outline: 0
+}
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0;
+	text-shadow: none;
+	vertical-align: middle
+}
+button, input, optgroup, select, textarea {
+	color: inherit;
+	margin: 0;
+	-webkit-writing-mode: horizontal-tb
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+	-webkit-appearance: button;
+	cursor: pointer
+}
+.f-l{ float:left;}
+.f-r{ float:right;}
+.clear{ clear:both;}
+/*头部*/
+.header{ max-width: 640px; height:2.2rem; background-color:#006ca7; width:100%;margin:0 auto;}
+.header-zt{ width:96%; margin:0 auto; padding-top:.2rem;}
+.header-zt img{ width:5.26rem; height:1.8rem;}
+.header-zt span{ float:right; color:#fff; font-size:.8rem; padding-top: 0.06rem; margin-right:.3rem;}
+.header-zt span img{width:1.4rem; height:1.4rem;}
+.containter{width:100%; margin:.2rem auto 0;max-width: 640px;}
+/*首页按钮导航*/
+.webHeaderBox{ width:100%; max-width:640px;margin: 0 auto;}
+.navbar{position:fixed;z-index:1;
+        max-height:12.5rem;height:0!important;bottom:0!important;
+		max-width:640px;width:100%;overflow-x:hidden;overflow-y:auto;
+        top:50%;opacity:0;visibility:hidden;
+		-webkit-transform:translateY(-50%);
+		-ms-transform:translateY(-50%);
+		-moz-transform:translateY(-50%);
+		-o-transform:translateY(-50%);
+		transform:translateY(-50%);
+		-webkit-perspective:1000;-ms-perspective:1000;-moz-perspective:1000;
+		-o-perspective:1000;perspective:1000;-webkit-transition:all 300ms;
+		-ms-transition:all 300ms;-moz-transition:all 300ms;-o-transition:all 300ms;
+		transition:all 300ms;top:50%;-webkit-transform:translateY(-50%);
+		-ms-transform:translateY(-50%);-moz-transform:translateY(-50%);
+		-o-transform:translateY(-50%);transform:translateY(-50%);
+}
+.navButton{position:fixed;text-decoration:none;bottom:2.5rem;
+           -webkit-border-radius:2.5rem;-ms-border-radius:2.5rem;
+		   -moz-border-radius:2.5rem;-o-border-radius:2.5rem;border-radius:2.5rem;
+		   height:2.5rem;width:2.5rem;padding:0;line-height:2rem;
+		   text-align:center;z-index:99;margin:0 0 0 .75rem;
+}
+.navButton .navButtonPanel{width:5rem;height:4rem;position:absolute;bottom:-0.75rem;left:-0.75rem;display:block}
+.navButton .menuNav{font-size:.76rem;-webkit-border-radius:100%;
+                    -ms-border-radius:100%;-moz-border-radius:100%;
+					-o-border-radius:100%;border-radius:100%;width:2rem;
+					margin:.2rem auto;height:2rem;border:.15rem solid #fff;background:#006ca7;
+					-webkit-border-radius:100%;-ms-border-radius:100%;-moz-border-radius:100%;
+					-o-border-radius:100%;border-radius:100%;height:2rem;width:2rem;
+					background:#006ca7;-webkit-box-shadow:0 0 2px rgba(0,0,0,.3);
+					-ms-box-shadow:0 0 2px rgba(0,0,0,.3);-moz-box-shadow:0 0 2px rgba(0,0,0,.3);
+					-o-box-shadow:0 0 2px rgba(0,0,0,.3);box-shadow:0 0 2px rgba(0,0,0,.3);margin:.2rem auto;
+}
+.navButton .menuNav a,.navButton .menuNav a:hover{ color:#fff;  }
+.form{background:#fff;-webkit-box-shadow:0rem .05rem .1rem rgba(0,0,0,.2);
+       -ms-box-shadow:0rem .05rem .1rem rgba(0,0,0,.2);-moz-box-shadow:0rem .05rem .1rem rgba(0,0,0,.2);
+	   -o-box-shadow:0rem .05rem .1rem rgba(0,0,0,.2);box-shadow:0rem .05rem .1rem rgba(0,0,0,.2);
+}
+
+
+
+
+/*底部*/
+.mobiCol10 .webFooterBox,.mobiCol11 .webFooterBox,.mobiCol12 .webFooterBox,.mobiCol13 .webFooterBox,.mobiCol14 .webFooterBox,.mobiCol16 .webFooterBox,.mobiCol22 .webFooterBox{display:none}
+.webFooterBox{margin:0 auto}.webFooterBox .bottomdiv{height:1.75rem}
+.webFooterBox .bottomdiv .bottom{position:relative;background:#006ca7;height:1.5rem; font-size:.5rem; width:100%; max-width:640px; margin:0 auto;}
+.webFooterBox .bottomdiv .bottom .backtop{width:2rem;float:right;color:#fff;position:relative;text-transform:capitalize;text-align:right;padding-right:1rem;font-size: 0.66rem;line-height:1.5rem;transition:all 350ms;-webkit-transition:all 350ms;font-family:verdana;font-weight:bold;cursor:pointer}.webFooterBox .bottomdiv .bottom .backtop:active{background:rgba(0,0,0,.5)}
+.webFooterBox .bottomdiv .bottom .backtop b{position:absolute;width:0;height:0;top:.5rem;right:.35rem;border:.2rem transparent solid;border-bottom-color:#fff}
+.webFooterBox .bottomdiv .bottom .backtop a,.webFooterBox .bottomdiv .bottom .backtop{ color:#fff;}
+.technical{margin-bottom:0rem;padding:.25rem 0rem ; text-align:center; font-size:.6rem;}
+.technicalSupport{color:#666}
+.technicalSupport a,.technicalSupport a:hover{ color:#006ca7; text-decoration:underline; margin-left:.2rem;}
+.technicalSupport a.PcVer,.technicalSupport a.PcVer:hover{ color:#666;}
+.webCustomerServiceBox{margin:0 auto 2.4rem;width:100%;max-width:640px; z-index:9999999}
+.webCustomerServiceBox .customerServiceDiv{width:100%;max-width:640px;-webkit-backface-visibility:hidden;margin:0 auto;}
+.webCustomerServiceBox a{color:#fdc200;}
+.webCustomerServiceBox .discribe{color:#fff}
+.webCustomerServiceBox .customerServiceDiv{position:fixed;bottom:0rem;height:2.4rem;z-index:1;background:0;
+                                           background:url(../images/bg_pic_1.png) repeat-x left top #000;background-size:auto;
+}
+.customerServiceDiv .ddh{ color:#fdc200; font-size:.8rem; width:32.6%;text-align:center;  margin-top: .6rem; }
+.customerServiceDiv .ddh a,.customerServiceDiv .ddh a:hover{color:#fdc200; font-size:.8rem; }
+.customerServiceDiv  .line{color:#fdc200; width:1%;font-size:.6rem; text-align:center;margin-top: .75rem;}
+.customerServiceDiv .yb-qq{color:#fdc200; font-size:.8rem; width:32.6%;text-align:center; margin-top: .6rem; vertical-align:middle;}
+.customerServiceDiv .yb-qq img{ width:.7rem; height:.7rem; }
+.customerServiceDiv .ybm{color:#fdc200; font-size:.6rem; width:32.6%;text-align:center; margin-top: .6rem;}
+.customerServiceDiv .ybm a,.customerServiceDiv .ybm a:hover{ color:#fdc200; font-size:.8rem; }
+/*打电话*/
+/*--弹出效果--*/
+.pop-up{ width:6.4rem;position:relative;margin:0 auto; overflow:hidden}
+.login{ width:16rem;position:fixed;bottom:2.4rem;display:none;background:#ffffff;z-index:9999; margin-left:-7.39rem}
+.login-title{width:100%; overflow:hidden;height:1.5rem; background:#006ca7; text-align:center; line-height:1.5rem; color:#fff; font-size:.8rem;}
+.login-title span{position:absolute;font-size:.47rem;right:.3rem;top:.5rem;width:2rem;height:.4rem; line-height:.4rem; text-align:center; display:block;}
+.login-title span a{display:block;}
+.login-title span a,.login-title span a:hover{ color:#fff;}
+.login-content{  text-align:center; margin:0 auto;}
+.boda{ height:1.5rem; line-height:1.5rem; font-size:.5rem; color:#555;}
+.haoma{height:1.2rem; line-height:.9rem; font-size:1rem; color:#008000;}
+.xzbd{ width:94%; margin:0 auto .43rem; background:#ff882a; height:1.5rem; color:#fff; text-align:center;font-size:.6rem; border-radius:.2rem;}
+
+.reveal-modal-bg { 
+	position: fixed; 
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(0,0,0,.8);
+	z-index: 999999;
+	display: none;
+	top: 0;
+	left: 0; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.reveal-modal-bg { 
+	position: fixed; 
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background:rgba(0,0,0,.8);
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0; 
+}
+
+.reveal-modal {
+	visibility: hidden;
+	top: 1rem; 
+	left: 50%;
+	margin-left: .01rem;
+	width: 10.2rem;
+	background: #eee url(../images/modal-gloss.png) no-repeat -200px -80px;
+	position: absolute;
+	z-index: 101;
+	padding: .3rem .4rem .34rem;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+.reveal-modal.small 		{ width: 2rem; margin-left: -1.4rem;}
+.reveal-modal.medium 		{ width: 4rem; margin-left: -2.4rem;}
+.reveal-modal.large 		{ width: 6rem; margin-left: -3.4rem;}
+.reveal-modal.xlarge 		{ width: 8rem; margin-left: -4.4rem;}
+
+.reveal-modal .close-reveal-modal {
+	font-size: .22rem;
+	line-height: .5;
+	position: absolute;
+	top: .08rem;
+	right: .11rem;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+} 
+/*客服*/
+/* leftsead */
+#leftsead{width:1.61rem;height:3rem;position:fixed;top:5rem;right:0; z-index:100;}
+*html #leftsead{margin-top:3.58rem;position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+#leftsead li{width:1.61rem;height:2.9rem;}
+#leftsead li img{float:right; margin-right:.08rem;}
+#leftsead li a{height:.49rem;float:right;display:block;min-width:.47rem;max-width:1.61rem;}
+
+
+
+
+
+/*--屏幕筛选--*/
+@-webkit-keyframes entrys {
+0%, 100% {
+-webkit-transform:translateX(0)
+}
+10%, 30%, 50%, 70%, 90% {
+-webkit-transform:translateX(-.2rem)
+}
+20%, 40%, 60%, 80% {
+	
+-webkit-transform:translateX(.2rem)
+}
+}
+@keyframes entrys {
+0%, 100% {
+transform:translateX(0)
+}
+10%, 30%, 50%, 70%, 90% {
+transform:translateX(-.2rem)
+}
+20%, 40%, 60%, 80% {
+transform:translateX(.2rem)
+}
+}
+@-webkit-keyframes rotate {
+from {
+-webkit-transform:rotate(0deg)
+}
+to {
+-webkit-transform:rotate(360deg)
+}
+}
+
+@media screen and (min-width:410px) {
+html {
+	font-size: 400%
+}
+}
+
+@media screen and (min-width:480px) {
+html {
+	font-size: 469%
+}
+}
+
+@media screen and (min-width:640px) {
+html {
+	font-size: 625%
+}
+}

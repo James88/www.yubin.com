@@ -58,10 +58,10 @@ class Feedback extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => '反馈类型',
+            'type' => '专业',
             'name' => '姓名',
             'phone' => '电话',
-            'content' => '反馈内容',
+            'content' => '备注',
             'created_at' => '添加时间',
             'updated_at' => '修改时间',
         ];

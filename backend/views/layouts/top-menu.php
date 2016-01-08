@@ -160,6 +160,10 @@ $menuItemsMain = [
                 'label' => '网页广告管理',
                 'url' => ['/ads'],
             ],
+            [
+                'label' => '查看预约报名信息',
+                'url' => ['/feedback'],
+            ],
         ],
     ],
 ];

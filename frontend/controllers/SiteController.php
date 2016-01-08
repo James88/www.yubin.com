@@ -60,8 +60,14 @@ class SiteController extends Controller
         return $this->render('singlepage',['model'=>$model]);
     }
     
+    /*
+     * 单页显示
+     */
+    public function actionPage($id){
+        $model = $this->findSinglePage($id);
+        return $this->render('singlepage',['model'=>$model]);
+    }
     
-
     /*
      * 查找单页内容
      */

@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+.currentposition{ background:#eee; border-bottom:1px solid #ddd; height:1rem; line-height:1rem; padding-left:.47rem; font-size:.6rem;}
+.currentposition a,.currentposition a:hover{ color:#555;font-size:.6rem;}
+.containter-zt{ width:15rem;  margin:0 auto; min-height:16rem; height:auto !important;}
+.containter-xm-zt{width:16rem;  margin:0 auto; min-height:16rem; height:auto !important; background:#eee;}
+/*新闻列表*/
+ul.new-list{ width:15rem; margin-top:.47rem;}
+ul.new-list li{ float:left; border:1px solid #ddd;
+        -moz-box-shadow:.01rem .06rem .06rem #ddd;
+        -webkit-box-shadow:.01rem .06rem .06rem #ddd;
+        box-shadow:.01rem .06rem .06rem #ddd;
+       filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=5);/*for ie6,7,8*/
+	    height:auto !important; 
+		min-height:1.4rem;
+	   width:14.2rem;
+	   margin-bottom:.5rem;
+	   padding:.4rem;
+}
+ul.new-list li .new-bt{ min-height:.8rem; height:auto !important; line-height:1rem; font-size:.76rem; font-weight:bold;width:14.2rem; margin-top:.2rem;  }
+ul.new-list li .new-bt a{ color:#333;}
+ul.new-list li .new-bt a:hover{ color:#006ca7;}
+ul.new-list li .new-bt  span{ float:right; color:#f00; margin-left:.2rem; font-size:.6rem; font-weight:normal;}
+.seemore{border:1px solid #ddd;
+		 width:15rem;
+		 height:1.2rem;
+		 line-height:1.2rem;
+		 font-size:.76rem;
+		 text-align:center;
+		 margin-bottom:.5rem;
+}
+.seemore a{color:#333;}
+.seemore a:hover{ color:#006ca7;}
+/*详情*/
+.detail-zt{  border-bottom: 1px solid #ddd;width:15.2rem;padding:0 .4rem; min-height:3rem; height:auto !important; overflow: hidden;}
+.detail-zt .new-bt{  line-height:1.2; font-size:1rem; font-weight:bold;width:15.2rem; margin-top:.2rem; text-align: center;padding-bottom: 0.3rem; letter-spacing:.02rem; margin:.8rem 0 .5rem; overflow:hidden;border-bottom: 1px dashed #ddd;}
+.detail-zt .new-sj{height:.8rem;line-height:.6rem; font-size:.6rem;color:#555;text-align: center;}
+.detail-zt .new-sj .new-sj-time{ background:url(../images/sj.gif) no-repeat left center;  padding-left:.8rem;}
+.detail-zt .new-sj .new-sj-form{ background:url(../images/gs.gif) no-repeat left center;  padding-left:.8rem;}
+.detail-zt .new-sj .new-sj-read{ background:url(../images/ll.gif) no-repeat left center;  padding-left:.8rem;}
+.detail-img{ width:15rem;  margin:.5rem auto; height:4rem;  overflow:hidden;}
+.detail-img img{ width:100%;	height:100%;}
+.detail-wz{ margin-bottom:1rem;}
+.detail-wz p{ text-indent:2em; font-size:.8rem;}
+.xgread{ width:15rem;}
+.xgread-tit{ height:.8rem; line-height:.8rem; font-size:.76rem; width:15rem; border-top:1px solid #ddd; position:relative;}
+.xgread-tit span{ position:absolute;border-top:1px solid #006ca7; font-size:.5rem;font-weight:bold; top:-.06rem;}
+ul.xgread-zt{ width:15rem; margin:.3rem 0 1rem; height:auto !important; min-height:5rem;}
+ul.xgread-zt li{ float:left; height:1rem; line-height:1rem;font-size:.55rem; border-bottom:1px solid #eee; width:15rem;}
+ul.xgread-zt li a{color:#333;}
+ul.xgread-zt li a:hover{ color:#006ca7;}
+/*联系我们*/
+.contact{ color:#333; margin-top:.5rem;}
+.contact p{ line-height:1.2rem; font-size:.8rem; margin-top:.3rem}
+.contact p label{color:#555;}
+.contact p a,.contact p a:hover{ color:#006ca7;}
+.contact-map{ margin-top:.3rem; width:15rem; height:8rem;}
+.contact-map img{ width:100%; height:100%;}
+/*培训项目*/
+dl.pxxm{ width:15.6rem; background:#fff;  min-height:6rem;height:auto !important;padding-right: 0.4rem;
+        -moz-box-shadow:0rem .1rem .06rem #ddd;
+        -webkit-box-shadow:0rem .1rem .06rem #ddd;
+        box-shadow:0rem .1rem .06rem #ddd; margin-bottom:.6rem;
+}
+dl.pxxm dt{ width:15.6rem; color:#006ca7; font-weight:bold; font-size:.5rem; margin-left:.5rem; height:1.6rem; line-height:1.6rem;}
+dl.pxxm dd{ width:4.58rem; float:left; 
+            border:1px solid #eee; border-radius:.3rem;
+			 margin-left:.5rem; height:.8rem; line-height:.8rem;
+			  text-align:center; margin-bottom:.5rem; font-size:.4rem;
+}
+dl.pxxm dd a{ color:#333;}
+dl.pxxm dd a:hover{ color:#006ca7;}
+/*预约报名*/
+.yybm-bt{ height:1.7rem; line-height:1.7rem;font-weight:bold; font-size:.9rem; text-align:center;color:#006ca7; border-bottom:1px dashed #ddd; position:relative; letter-spacing:.2rem;}
+.yybm-bt span{ background:url(../images/yybm-tb.gif) no-repeat  center  bottom; height:.4rem; display:block;left: 7.68rem;
+    position: absolute;
+    top: 1.74rem;
+    width: 1rem;
+}
+.yybm-bg{ margin-top:.5rem;}
+.yybm-bm{ height:2rem; line-height:2rem; color:#333; font-size:.8rem;}
+.yybm-bm input{ border:1px solid #ddd; height:1.3rem;line-height:1.3rem; }
+.yybm-bm-bz{font-size:.8rem;    margin-top: 0.5rem;}
+.yybm-bm label{ color:#555;  width:3rem;height:1.6rem; line-height:1.6rem; display:inline-block;}
+.yybm-bm-bz label{color:#555;width:3rem; min-height:2.3rem;display:inline-block;}
+.yybm-bm-bz .yybm-bz{ width:11.6rem; min-height:4rem; height:auto !important;border:1px solid #ddd;}
+.yybm-an{ height:1rem; line-height:1rem; margin-left:3rem; width:12.8rem;color:#fff; font-size:.4rem; margin-top:1.2rem;font-size:1rem;}
+.yybm-an span{ width:6rem; margin:.2rem;}
+.yybm-an .yybm-tj,.yybm-an .yybm-cz{ background:#fdc200; border-radius:.2rem; width:5rem; height:1.5rem; line-height:1.5rem; font-size:1rem; }
+
