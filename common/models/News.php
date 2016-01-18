@@ -104,14 +104,14 @@ class News extends \yii\db\ActiveRecord
     /*
      * 获取部分新闻 根据分类
      */
-    static public function getNews($cid,$num){
+    static public function getNews($cid,$num,$status = Status::STATUS_ACTIVE,$eq = '>='){
         $allCategory = Category::find()->asArray()->all();
         $arrayCategoryIdName = \yii\helpers\ArrayHelper::map($allCategory, 'id', 'name');
         $arrSubCat = Category::getArraySubCatalogId($cid, $allCategory);
         $where = [
             'and',
             ['category_id'=>$arrSubCat],
-            'status>='.Status::STATUS_ACTIVE,
+            'status'.$eq.$status,
         ];
         $news = News::find()->where($where)->limit($num)->all();
         return $news;

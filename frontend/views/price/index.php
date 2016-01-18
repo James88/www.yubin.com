@@ -70,7 +70,7 @@ $this->title = "信息价查询";
 						</div>
                         <span class="f-r results-total">
 						    
-                            信息报价(<?= $year; ?>年<?= $month; ?>月)共
+                            信息报价(<?= $year?$year:date('Y',time()); ?>年<?= $month; ?>月价格信息)共
                             <b id="searchCount"><?= $totalItems; ?></b>
 							条
 <!--    <span class="xxj-fy">
@@ -110,9 +110,6 @@ $this->title = "信息价查询";
                 </tr>
                 
                 <div id="myModal<?php echo $k; ?>" class="reveal-modal xxj-ckjg">
-                    <p><span class="bt-ys">产品名称:</span><?= $v->name; ?></p>
-                    <p><span class="bt-ys">产品规格:</span><?= $v->guige; ?></p>
-                     <p><span class="bt-ys">产品单位:</span><?= $v->danwei; ?></p>
                     <?php
                         $price = $v->price;
                         if(Yii::$app->request->get('y') && Yii::$app->request->get('m')){
@@ -123,8 +120,13 @@ $this->title = "信息价查询";
                             }
                         }
                     ?>
-                     <p><span class="bt-ys">产品价格:</span><label class="jg"><?= $price; ?>元</label></p>
-                    <a class="close-reveal-modal">&#215;</a>
+                    <div class="xxjjg-bt"><?= $v->name; ?></div>
+                    <p><span class="bt-ys">名称:</span><?= $v->name; ?></p>
+                    <p><span class="bt-ys">规格:</span><?= $v->guige; ?></p>
+                    <p><span class="bt-ys">单位:</span><?= $v->danwei; ?></p>
+                    <p><span class="bt-ys">价格:</span><label class="jg"><?= $price; ?>元</label></p>
+                    <p><span class="bt-ys">备注:</span><?= $v->beizhu?$v->beizhu:"无"; ?></p>
+                    <a class="close-reveal-modal">关闭</a>
                 </div>
                 <?php endforeach; ?>
             </table>

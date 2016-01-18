@@ -54,7 +54,7 @@ ul.xgread-zt li a:hover{ color:#006ca7;}
 .contact p{ line-height:1.2rem; font-size:.8rem; margin-top:.3rem}
 .contact p label{color:#555;}
 .contact p a,.contact p a:hover{ color:#006ca7;}
-.contact-map{ margin-top:.3rem; width:15rem; height:8rem;}
+.contact-map{width:15rem; height:8rem;margin: .3rem 0;}
 .contact-map img{ width:100%; height:100%;}
 /*培训项目*/
 dl.pxxm{ width:15.6rem; background:#fff;  min-height:6rem;height:auto !important;padding-right: 0.4rem;

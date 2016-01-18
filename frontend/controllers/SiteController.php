@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use yii;
 use frontend\components\Controller;
 use common\models\Category;
 use common\models\Slider;
@@ -12,6 +13,14 @@ use yii\web\NotFoundHttpException;
  */
 class SiteController extends Controller
 {
+    public function beforeAction($action)
+    {            
+        if ($action->id == 'yuyue') {
+            Yii::$app->controller->enableCsrfValidation = false;
+        }
+
+        return parent::beforeAction($action);
+    }
     public function actionIndex(){
         //页面左侧分类
         $bigCate = Category::find()->where(['is_nav'=>\common\models\YesNo::YES])->orderBy(['sort_order'=>SORT_ASC])->all();
@@ -27,6 +36,30 @@ class SiteController extends Controller
             'teachers'=>$teachers,
             'friendlink'=>$friendLink,
         ]);
+    }
+    /*
+     * 在线报名
+     */
+    public function actionFeed(){
+        $model = new \common\models\Feedback();
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            echo "<script>alert('预约信息提交成功！');</script>";
+        }
+        return $this->render('feedback',['model'=>$model]);
+        //return $this->render('feedback');
+    }
+    /*
+     * 在线预约
+     */
+    public function actionYuyue(){
+        $model = new \common\models\Feedback();
+        if($model->load(Yii::$app->request->post()) && $model->save()){
+            echo "<script>alert('您的信息已提交，请耐心等待查询结果。');window.history.go(-1);</script>";
+        }else{
+            echo "<script>alert('请准确填写您的信息');window.history.go(-1);</script>";
+        }
+        //return $this->render('feedback',['model'=>$model]);
+        //return $this->render('feedback');
     }
     
     /*

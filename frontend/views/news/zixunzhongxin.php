@@ -24,7 +24,7 @@ $this->params['breadcrumbs'] = $breadcrumbs;
                         <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?></a>
                     </div>
                 </div>
-                <div class="zxzx-tp"><img src="<?= $v->thumb; ?>" width="174" height="133"></div>
+                <div class="zxzx-tp"><img src="<?= $v->thumb; ?>" width="180" height="110"></div>
            </li>
         <?php endforeach; ?>
        

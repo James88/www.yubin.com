@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('app', 'Create ') . Yii::t('app', 'Category'), ['create'], ['class' => 'btn btn-success']) ?>
+        <span style="color:red;font-weight: bold;">提醒：分类一定不要删除，可以新增或修改，修改可以调整分类的归属某个子分类，删除的话需沟通</span>
     </p>
     <table class="table table-striped table-bordered">
         <thead>

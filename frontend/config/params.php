@@ -2,6 +2,6 @@
 return [
     'adminEmail' => 'admin@example.com',
     'staticsPath' => '/statics/',
-    'defaultPageSizeProduct' => 1,
+    'defaultPageSizeProduct' => 15,
     
 ];

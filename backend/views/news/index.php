@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('添加资讯', ['create'], ['class' => 'btn btn-success']) ?>
+        <span style="color:red;font-weight: bold;">提醒：首页带图和简介的新闻 需要把信息设置为推进 并且有图片 才会显示</span>
+
     </p>
 
     <?= GridView::widget([

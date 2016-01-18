@@ -126,6 +126,9 @@ ul.zlxz-nr li{ width:342px; height:29px; line-height:29px; padding-left:18px; ba
 
 /*综合新闻*/
 .third-middle{ width:490px; margin:0 20px; }
+.xytz-tit{width:475px; border-bottom:1px solid #e7ecf0;}
+ul.xytz-nr{ width:475px;}
+ul.xytz-nr li{ width:475px; height:29px; line-height:29px; padding-left:15px; background:url(../images/yubin_40_1.jpg) no-repeat left center;}
 .zhxw-tit{padding-top:14px; color:#006ca7; height:30px; line-height:30px; }
 .zhxw-tit h2 a,.zhxw-tit h2 a:hover{color:#006ca7;}
 dl.zhxw-nr{ width:490px;height:55px; border-bottom:1px dotted #e7ecf0;}
@@ -143,24 +146,25 @@ dl.zhxw-nr dd{ float:left; margin-right:25px;}
 .jz-zp-qz{ width:1170px; height:370px;}
 /*最新招聘*/
 .zxzp-tit{ width:475px;border-bottom:1px solid #e7ecf0;}
-ul.zxzp-nr li{height:29px; line-height:29px; background:url(../images/gonggao.gif) no-repeat left center; padding-left:10px;}
+ul.zxzp-nr li{height:29px; line-height:29px; background:url(../images/gonggao.gif) no-repeat left center; padding-left:10px; overflow: hidden;}
 ul.zxzp-nr li a span,ul.zxzp-nr li a:hover span{ float:right; color: #999;}
 ul.zxzp-nr li a label.zx-fl,ul.zxzp-nr li a:hover label.zx-fl{color: #999; margin-right:5px;}
 ul.zxzp-nr li a label.zx-m-f-l,ul.zxzp-nr li a:hover label.zx-m-f-l{ margin:0 6px;}
 ul.zxzp-nr li a label.zx-ys,ul.zxzp-nr li a:hover label.zx-ys{ color:#006ca7;}
+ul.zxzp-nr li label{cursor:pointer;}
 /*最新求职*/
 .zxqz-tit{ width:280px; border-bottom:1px solid #e7ecf0;}
 /*广告*/
-.ad01{ width:1170px; height:91px; margin:20px 0;}
+.ad01{ width:1170px; height:70px; margin:20px 0;}
 /*培训项目相关*/
 .pxxmxg { width:1170px;}
 .pxxm-left{ width:880px;}
 /* 选项卡css */
-		.slideTxtBox{ width:420px; border-top:2px solid #006ca7; text-align:left; margin:0 20px 20px 0;}
-		.slideTxtBox .hd{ height:37px; line-height:37px;  padding:0 10px 0 0px;   border-bottom:1px solid #ddd;  position:relative; border-right: solid 1px #ddd;}
-		.slideTxtBox .hd ul{ float:left;  position:absolute; left:0px; top:0px; height:32px;   }
-		.slideTxtBox .hd ul li{ float:left; padding:0 15px; cursor:pointer; font-size:16px;  }
-		.slideTxtBox .hd ul li.on{ height:37px;  color:#006ca7; border:1px solid #ddd; border-bottom:2px solid #fff; border-top:none; }
+		.slideTxtBox{ width:420px; height:380px; text-align:left; margin:0 20px 20px 0;}
+		.slideTxtBox .hd{ height:37px; line-height:37px;  padding:0 10px 0 0px;   border-bottom:1px solid #ddd;  position:relative; }
+		.slideTxtBox .hd ul{ float:left;  position:absolute; left:0px; top:2px; height:32px;   }
+		.slideTxtBox .hd ul li{ float:left;  cursor:pointer; font-size:16px;  width:406px; }
+		.slideTxtBox .hd ul li span{ float:right;}
 		.slideTxtBox .bd ul.pxxm-nr{ width:420px;}
 		.slideTxtBox .bd ul.pxxm-nr li{ width:420px; }
 		.slideTxtBox .bd ul.pxxm-nr li .pxxm-nr-body{ width:420px;}
@@ -179,7 +183,7 @@ ul.zxzp-nr li a label.zx-ys,ul.zxzp-nr li a:hover label.zx-ys{ color:#006ca7;}
 
 .pxxm-right{ width:290px;}
 /*热门专题*/
-.rmzt{ width:290px;}
+.rmzt{ width:290px; overflow:hidden;}
 .rmzt-tit{ width:275px; border-bottom:1px solid #e7ecf0}
 /*师生风采*/
 ul.ssfc-nr{ width:1170px;}

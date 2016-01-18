@@ -42,12 +42,12 @@ $this->title="移动版首页";
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>造价员培训<p class='cubeLink_subText_p'></p>
                                     </div></div></a>
                                  </div>
-                                <div class='cubeLink cubeLink2 ' id='cubeNavigation307_cubeLink2' linkid='2' ><a class='cubeLink_a ' href="new-detail.html"  target='_self' id='cubeLink_a2_cubeNav307' >
+                                <div class='cubeLink cubeLink2 ' id='cubeNavigation307_cubeLink2' linkid='2' ><a class='cubeLink_a ' href="<?= Yii::$app->urlManager->createUrl(['mobile/list','id'=>43]); ?>"  target='_self' id='cubeLink_a2_cubeNav307' >
                                     <div class='cubeLink_bg'></div><div class="cubeLink_ico icon-cube iconfont">&#xe607;</div>
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>造价师培训<p class='cubeLink_subText_p'></p>
                                     </div></div></a>
                                 </div>
-                                <div class='cubeLink cubeLink3 ' id='cubeNavigation307_cubeLink3' linkid='3' ><a class='cubeLink_a ' href="new-detail.html"  target='_self' id='cubeLink_a3_cubeNav307' >
+                                <div class='cubeLink cubeLink3 ' id='cubeNavigation307_cubeLink3' linkid='3' ><a class='cubeLink_a ' href="<?= Yii::$app->urlManager->createUrl(['mobile/list','id'=>51]); ?>"  target='_self' id='cubeLink_a3_cubeNav307' >
                                     <div class='cubeLink_bg'></div><div class="cubeLink_ico icon-cube iconfont">&#xe60d;</div>
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>预算业务<p class='cubeLink_subText_p'></p>
                                     </div></div></a>
@@ -57,12 +57,12 @@ $this->title="移动版首页";
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>开班信息<p class='cubeLink_subText_p'></p>
                                     </div></div></a>
                                </div>
-                               <div class='cubeLink cubeLink5 ' id='cubeNavigation307_cubeLink5' linkid='5' ><a class='cubeLink_a ' href="new-list.html"  target='_self' id='cubeLink_a5_cubeNav307' >
+                               <div class='cubeLink cubeLink5 ' id='cubeNavigation307_cubeLink5' linkid='5' ><a class='cubeLink_a ' href="<?= Yii::$app->urlManager->createUrl(['mobile/list','id'=>8]); ?>"  target='_self' id='cubeLink_a5_cubeNav307' >
                                     <div class='cubeLink_bg'></div><div class="cubeLink_ico icon-cube iconfont">&#xe63c;</div>
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>报考指南<p class='cubeLink_subText_p'></p>
                                     </div></div></a>
                                </div>
-                               <div class='cubeLink cubeLink6 ' id='cubeNavigation307_cubeLink6' linkid='6' ><a class='cubeLink_a ' href="new-list.html" style='cursor:default;'  id='cubeLink_a6_cubeNav307' >
+                               <div class='cubeLink cubeLink6 ' id='cubeNavigation307_cubeLink6' linkid='6' ><a class='cubeLink_a ' href="<?= Yii::$app->urlManager->createUrl(['mobile/list','id'=>45]); ?>" style='cursor:default;'  id='cubeLink_a6_cubeNav307' >
                                     <div class='cubeLink_bg'></div><div class="cubeLink_ico icon-cube iconfont">&#xe603;</div>
                                     <div class='cubeLink_text g_link'><div class='cubeLink_text_p '>学历招生<p class='cubeLink_subText_p'></p>
                                     </div></div></a>

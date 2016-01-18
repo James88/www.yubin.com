@@ -85,6 +85,7 @@ class AdsController extends Controller
             if($model->ord == ""){
                 $model->ord = 0;
             }
+            //var_dump($model);
             if($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }

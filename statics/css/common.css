@@ -75,10 +75,23 @@ th {
 /*底部*/
 .foot{ width:100%; background-color:#383838; height:333px; margin-top:60px;}
 .foot-zt{ width:1170px; margin:0 auto; padding-top:40px;height:160px;}
-.foot-left{ width:144px; padding-left:121px;padding-right:36px;background:url(../images/foot-xian.jpg) no-repeat right 0; height:160px;}
-.foot-left-top{width:144px;}
-.foot-left-top img{ width:144px;height:63px;}
-ul.foot-left-bottom{width:144px;}
+.foot-left {
+    background:url("../images/foot-xian.jpg") no-repeat right 0;
+    height: 160px;
+    padding-left: 101px;
+    padding-right: 36px;
+    width: 164px;
+}
+.foot-left-top{width:164px;}
+.foot-left-top img {
+    height: 63px;
+    width: 164px;
+}
+ul.foot-left-bottom {
+    margin-left: 18px;
+    width: 164px;
+}
+
 ul.foot-left-bottom li{ float:left; margin-right:16px;}
 ul.foot-left-bottom li a,ul.foot-left-bottom li a:hover{ color:#fff;}
 .foot-middle{ width:356px; padding:0 36px; color:#fff; background:url(../images/foot-xian.jpg) no-repeat right 0; margin-right:36px; line-height:30px; height:160px;}

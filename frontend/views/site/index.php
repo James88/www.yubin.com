@@ -8,7 +8,7 @@ use frontend\assets\SuperSliderAsset;
 use common\models\Category;
 SuperSliderAsset::register($this);
 $this->title = '首页';
-$kaibanxinxi = \common\models\News::getNews(6,5);
+$kaibanxinxi = \common\models\News::getNews(6,8);
 ?>
 <div class="container">
 	<div class="first-screen">
@@ -121,7 +121,7 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
                         $str = date('m',$baomingshijian)."月".date('d',$baomingshijian)."号报名";
                     }else if(($baomingshijian < $currenttime) && ($currenttime < $jiezhishijian)){
                         //报名截止前的时间
-                        $str = date('m',$jiezhishijian)."月".date('d',$jiezhishijian)."号截止报名";
+                        $str = date('m',$jiezhishijian)."月".date('d',$jiezhishijian)."截止报名";
                     }else if($kaoshishijian>$currenttime){
                         //考试前的时间
                         $str = date('m',$kaoshishijian)."月".date('d',$kaoshishijian)."号考试";
@@ -166,46 +166,30 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
     <div class="kb-zh-wl">
    	  <div class="third-left f-l">
           <div class="kbxx-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>6]); ?>">更多</a></span>开班信息</div>	
-            <div class="kbxx-img"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/kbxx.gif" width="345" height="103" alt=""></div>
+            <!--<div class="kbxx-img"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/kbxx.gif" width="345" height="103" alt=""></div>-->
             <ul class="kbxx-nr">
                 
                 <?php if($kaibanxinxi){
                     foreach($kaibanxinxi as $k=>$v):
                  ?>
-                <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>">土建实训第三期6月8号开班了</a></li> 
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= \common\components\Utils::cutStr($v->title, 42); ?></a></li> 
                 <?php endforeach;}else{ ?>
                 <li><a href="#">暂无内容</a></li> 
                 <?php } ?>
         </ul>
       </div>
         <div class="third-middle f-l">
-        	<div class="zhxw-tit"><h2><a href="#">造价员培训有口皆碑，选择河南宇斌培训，联系黄老师</a></h2></div>
-            <dl class="zhxw-nr">
-           	  <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-                 <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-            </dl>
-            <div class="zhxw-tit"><h2><a href="#">造价员培训有口皆碑，选择河南宇斌培训，联系黄老师</a></h2></div>
-            <dl class="zhxw-nr">
-           	  <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-                 <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-            </dl>
-          <div class="zhxw-tit"><h2><a href="#">造价员培训有口皆碑，选择河南宇斌培训，联系黄老师</a></h2></div>
-            <dl class="zhxw-nr">
-           	  <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-                 <dt>[报考指南]</dt>
-                <dd><a href="#">2015河南造价员资格证书领</a></dd>
-                 <dd><a href="#">取通知造价员考试合格标准</a></dd>
-            </dl>
+            <div class="xytz-tit lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>57]); ?>">更多</a></span>学员通知</div>	
+            <ul class="xytz-nr">
+                <?php $xueyuantongzhi = \common\models\News::getNews(57, 8); ?>
+                <?php if($xueyuantongzhi){
+                    foreach($xueyuantongzhi as $k=>$v):
+                 ?>
+                <li><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= \common\components\Utils::cutStr($v->title, 42); ?></a></li> 
+                <?php endforeach;}else{ ?>
+                <li>暂无内容,请从后台添加</li> 
+                <?php } ?>
+            </ul>
         </div>
         
         <div class="third-right f-l">
@@ -223,6 +207,19 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
             <?php }else{echo "暂无视频推荐!";} ?>
         </div>
     </div>
+
+    <!--广告01-->
+    <div class="ad01">
+        <?php
+            $ads = \common\models\Ads::find()->where(['place'=>0])->one();
+            if($ads){
+        ?>
+        <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="70" alt=""></a>
+        <div class="clear"></div>
+            <?php } ?>
+       
+    </div>
+
 <!--建筑材料信息价，招聘，求职-->    
     <div class="jz-zp-qz m-b-20">
     	<div class="third-left f-l">
@@ -274,10 +271,10 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
     <!--广告01-->
     <div class="ad01">
         <?php
-            $ads = \common\models\Ads::find()->where(['id'=>1])->one();
+            $ads = \common\models\Ads::find()->where(['place'=>1])->one();
             if($ads){
         ?>
-        <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="91" alt=""></a>
+        <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="70" alt=""></a>
         <div class="clear"></div>
             <?php } ?>
        
@@ -288,45 +285,36 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
         	<div class="pxxm-zt">
             	<div class="slideTxtBox f-l " id="xm-01">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+				<ul>
+                    <li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>49]); ?>">更多</a></span>造价员培训</li>
+                </ul>
 			</div>
 			<div class="bd">
 				<ul class="pxxm-nr">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(49, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
-				<ul class="pxxm-nr" style="display: none;">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(49, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -335,45 +323,35 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 		</div>
         <div class="slideTxtBox f-l " id="xm-02">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+                <ul><li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>45]); ?>">更多</a></span>学历教育</li></ul>
 			</div>
 			<div class="bd">
-				<ul class="pxxm-nr">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
+				
 				<ul class="pxxm-nr" style="display: none;">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(45, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(45, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -382,45 +360,34 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 		</div>
         <div class="slideTxtBox f-l " id="xm-03">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+                <ul><li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>37]); ?>">更多</a></span>一二级建造师</li></ul>
 			</div>
 			<div class="bd">
 				<ul class="pxxm-nr">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(37, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
-				<ul class="pxxm-nr" style="display: none;">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(37, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -429,45 +396,34 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 		</div>
         <div class="slideTxtBox f-l " id="xm-04">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+                <ul><li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>48]); ?>">更多</a></span>造价工程师</li></ul>
 			</div>
 			<div class="bd">
 				<ul class="pxxm-nr">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(48, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
-				<ul class="pxxm-nr" style="display: none;">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(48, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -476,45 +432,34 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 		</div>
         <div class="slideTxtBox f-l " id="xm-05">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+                <ul><li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>47]); ?>">更多</a></span>消防工程师</li></ul>
 			</div>
 			<div class="bd">
 				<ul class="pxxm-nr">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(47, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
-				<ul class="pxxm-nr" style="display: none;">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(47, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -523,45 +468,34 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 		</div>
         <div class="slideTxtBox f-l " id="xm-06">
 			<div class="hd">
-				<ul><li class="on">造价工程师</li><li>造价员</li></ul>
+                <ul><li class="lm-tb"><span><a href="<?= Yii::$app->urlManager->createUrl(['news/index','cid'=>44]); ?>">更多</a></span>岗位证书</li></ul>
 			</div>
 			<div class="bd">
 				<ul class="pxxm-nr">
                 	<li>
                     	<div class="pxxm-nr-body">
+                            <?php
+                                $newsList = common\models\News::getNews(44, 1, common\models\Status::STATUS_REC,'=');
+                                foreach($newsList as $k=>$v){
+                            ?>
                         	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
+                                <div class="pxxm-nr-body-top-l f-l"><img src="<?= $v->thumb; ?>" width="180" height="110" alt=""></div>
                                 <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
+                                	<div class="pxxm-nr-body-top-r-tit"><?= $v->title; ?></div>
+                                    <div class="pxxm-nr-body-top-r-nr"><a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>"><?= $v->intro; ?><span>[详细]</span></a></div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
-                            </ul>
-                        </div>
-                    </li>
-				</ul>
-				<ul class="pxxm-nr" style="display: none;">
-                	<li>
-                    	<div class="pxxm-nr-body">
-                        	<div class="pxxm-nr-body-top">
-                            	<div class="pxxm-nr-body-top-l f-l"><img src="<?php echo Yii::$app->params['staticsPath']; ?>images/yubin_50.jpg" width="180" height="110" alt=""></div>
-                                <div class="pxxm-nr-body-top-r f-l">
-                                	<div class="pxxm-nr-body-top-r-tit">河南2016造价工程师考试条件....</div>
-                                    <div class="pxxm-nr-body-top-r-nr"><a href="#">这里是河南2016造价工程师新闻的简单摘要，这里是河南2016造价工程师新闻的简单摘要……<span>[详细]</span></a></div>
-                                </div>
-                            </div>
-                            <ul class="pxxm-nr-zt">
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">中国打破了世界软件巨头规则</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">口语：会说中文就能说英语！</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">农场摘菜不如在线学外语好玩</a></li>
-                                <li><span class="date">2011-11-11</span><a href="#" target="_blank">数理化老师竟也看学习资料？</a></li>
-                                <li class="pxxm-ys"><span class="date">2011-11-11</span><a href="#" target="_blank">学英语送ipad2,45天突破听说</a></li>
+                                <?php 
+                                    $newsList = common\models\News::getNews(44, 5, common\models\Status::STATUS_ACTIVE,'=');
+                                    foreach($newsList as $k=>$v){
+                                ?>
+                                <li<?php if($k % 2 == 0){echo ' class="pxxm-ys"';} ?>>
+                                    <span class="date"><?= date("Y-m-d",$v->created_at); ?></span>
+                                    <a href="<?= Yii::$app->urlManager->createUrl(['news/show','id'=>$v->id]); ?>" target="_blank"><?= $v->title; ?></a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </li>
@@ -629,13 +563,13 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
     	<div class="yqlj-tit">友情链接</div>
     <div class="yqlj-nr">
         <?php foreach ($friendlink as $k => $v): ?>
-        <a href="<?= $v->link; ?>" target="_blank"><span>建材网</span></a>
+        <a href="<?= $v->link; ?>" target="_blank"><span><?= $v->name; ?></span></a>
         <?php endforeach; ?>     
     </div>
     </div>
     <div class="ad01">
         <?php
-            $ads = \common\models\Ads::find()->where(['id'=>2])->one();
+            $ads = \common\models\Ads::find()->where(['place'=>2])->one();
             if($ads){
         ?>
         <a href="<?= $ads->url; ?>" target="_blank"><img src="<?php echo $ads->thumb; ?>" width="1170" height="69" alt=""></a>
@@ -645,7 +579,7 @@ $kaibanxinxi = \common\models\News::getNews(6,5);
 <?php 
 $js = <<< JS
          var ary = location.href.split("&");
-		jQuery(".slideBox").slide( { mainCell:".bd ul", effect:ary[1],autoPlay:ary[2],trigger:ary[3],easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
+		jQuery(".slideBox").slide( { mainCell:".bd ul", effect:ary[1],autoPlay:true,trigger:ary[3],easing:ary[4],delayTime:ary[5],mouseOverStop:ary[6],pnLoop:ary[7] });
         jQuery(".txtMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:2,interTime:50});
         jQuery(".slideTxtBox").slide();
         $('.all-sort-list > .item').hover(function(){

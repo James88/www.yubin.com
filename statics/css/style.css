@@ -121,7 +121,7 @@ ul.zxzx li .zxzx-zt{ width:560px; float:left;}
 .zxzx-zt-fb span.sj{background:url(../images/sj.gif) no-repeat left center;}
 .zxzx-zt-fb span.ll{background:url(../images/ll.gif) no-repeat left center;}
 ul.zxzx li .zxzx-tp{ width:176px; height:135px; float:right; margin-top:15px;}
-ul.zxzx li .zxzx-tp img{ width:174px; height:133px; border:1px  solid #999;}
+ul.zxzx li .zxzx-tp img{ width:180px; height:110px; border:1px  solid #999;}
 ul.zxzx li .zxzx-zt-nr{ line-height:29px;}
 ul.zxzx li .zxzx-zt-nr a,ul.zxzx li .zxzx-zt-nr a:hover{ color:#999;}
 
@@ -152,11 +152,12 @@ ul.xxj-zt li a label.zx-ys,ul.xxj-zt li a:hover label.zx-ys{ color:#999; margin-
 	display: none;
 	top: 0;
 	left: 0; 
+    background: rgba(0,0,0,.3);
 }
 
 .reveal-modal {
 	visibility: hidden;
-	top: 100px; 
+	top: 300px; 
 	left: 50%;
 	margin-left: -300px;
 	width: 520px;
@@ -178,15 +179,11 @@ ul.xxj-zt li a label.zx-ys,ul.xxj-zt li a:hover label.zx-ys{ color:#999; margin-
 .reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
 
 .reveal-modal .close-reveal-modal {
-	font-size: 22px;
-	line-height: .5;
-	position: absolute;
-	top: 8px;
-	right: 11px;
-	color: #aaa;
-	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
-	font-weight: bold;
 	cursor: pointer;
+	color:#aaa; font-size:14px;
+        float:right; border:1px solid #aaa;
+        border-radius:5px; text-align:center; 
+        padding:2px 9px; margin-top:10px;
 } 
 .date-t-option{ margin-top:20px;}
 .date-t-option .search-box{ position:relative; width:220px;height:23px; line-height:23px;  border:1px #ccc solid;box-shadow:inset 0px 1px 1px #e4e4e4;}
@@ -218,6 +215,10 @@ a:hover.btn-collection{ background-position:0 -67px;}
 .input-check{ background:url(../images/title_bg.png) no-repeat; width:13px; height:13px; display:inline-block; cursor:pointer;}
 .check-no{background-position:0 -106px;}
 .check-on{ background-position:-23px -106px;}
+.xxj-ckjg { width:300px;}
+.xxjjg-bt{ font-size:16px; height:35px; line-height:35px; font-weight:bold; color:#006ca7; border-bottom:1px solid #ccc; margin-bottom:10px;}
+.xxj-ckjg span.bt-ys{ margin-right:10px;}
+.xxj-ckjg label.jg{ color:#f00;}
 .xxj-ckjg span.bt-ys{ margin-right:10px;}
 .xxj-ckjg label.jg{ color:#f00;}
 /*求职详情*/
@@ -438,4 +439,22 @@ ul.ssfc li img{width:259px; height:174px; padding:2px; border:1px solid #e7ecf0;
 .picSildeLeft{cursor:pointer;position:absolute;top:32px;left:10px;z-index:9;}
 .picSildeRight{cursor:pointer;position:absolute;top:32px;right:10px;z-index:9;}
 
-
+/*预约报名*/
+input,button{ border:none;}
+.yybmpc-bt{ height:30px; line-height:30px;font-weight:bold; font-size:16px; text-align:center;color:#006ca7; border-bottom:1px dashed #ddd; position:relative; letter-spacing:2px;}
+.yybmpc-bt span{ background:url(../images/yybm-tb.gif) no-repeat  center  bottom; height:25px; display:block;
+    position: absolute;
+    left:372px;
+	top:22px;
+    width:50px;
+}
+.yybmpc-bg{ margin-top:40px;}
+.yybmpc-bm{ height:30px; line-height:30px; color:#333; font-size:16px; margin-bottom:20px;}
+.yybmpc-bm input{ border:1px solid #ddd; height:30px;line-height:30px;  width:260px;}
+.yybmpc-bm-bz{font-size:16px;}
+.yybmpc-bm label{ color:#555;  width:66px;height:30px; height:30px; display:inline-block;}
+.yybmpc-bm-bz label{color:#555;width:66px; min-height:100px;display:inline-block; vertical-align:top;}
+.yybmpc-bm-bz .yybmpc-bz{ width:500px; min-height:160px; height:auto !important;border:1px solid #ddd;}
+.yybmpc-an{ height:35px; line-height:35px; margin-left:66px; width:500px;color:#fff;  margin-top:20px;font-size:18px;}
+.yybmpc-an span{ width:100px; margin-right:32px; }
+.yybmpc-an .yybmpc-tj,.yybmpc-an .yybmpc-cz{ background:#fdc200; border-radius:5px; width:100px; height:35px; line-height:30px; font-size:18px;color:#fff; }

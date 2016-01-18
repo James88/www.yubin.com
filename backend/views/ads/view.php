@@ -27,7 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'place',
+            //'place',
+            [
+                'attribute'=>"place",
+                'value'=>$model->getPlaceName($model->place)
+            ],
             'thumb',
             'title',
             'intro:ntext',

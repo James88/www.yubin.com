@@ -44,18 +44,30 @@ class Ads extends \yii\db\ActiveRecord
     }
     public function place(){
         return [
-            '首页横幅广告1（1170*90）',
+            '首页横幅广告1（1170*70）',
             '首页横幅广告2(1170*70)',
+            '首页横幅广告3(1170*70)',
         ];
     }
 
+    /*
+     * 获取位置名
+     */
+    public function getPlaceName($placeid){
+        $places = $this->place();
+        if(isset($places[$placeid])){
+            return $places[$placeid];
+        }else{
+            return "";
+        }
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['place', 'thumb'], 'required'],
+            [['place',], 'required'],
             [['place', 'ord'], 'integer'],
             [['intro'], 'string'],
             [['updated_at', 'created_at'], 'safe'],
